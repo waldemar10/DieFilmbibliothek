@@ -1,0 +1,98 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/*LoginStartscreen */
+AnchorPane{
+	-fx-background-color:  #212121;
+}
+.hover{
+	-fx-cursor: hand;
+}
+.LoginVBoxlinks{
+	-fx-background-radius: 0px;
+	-fx-background-color:  #212121;
+	-fx-background-radius: 0px;
+	-fx-text-fill: #FAFAFA;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 0px;
+    -fx-border-width: 0px;
+}
+.buttons{
+	-fx-text-fill:  #212121;
+	-fx-background-color:  #FAFAFA;
+	-fx-background-radius: 20px;
+	-fx-border-radius: 0px;
+    -fx-border-width: 0px;
+}
+.buttons:hover{
+	-fx-background-color:  #3D5AFE;
+	-fx-text-fill:  #FAFAFA;
+	-fx-cursor: hand;
+}
+.button_suche{
+	-fx-text-fill:  #FAFAFA;
+	-fx-background-color:  #3D5AFE;
+    -fx-border-width: 0px;
+}
+.button_suche:hover{
+	-fx-text-fill:  #FAFAFA;
+	-fx-background-color:  #3D5AFE;
+    -fx-cursor: hand;
+}	
+.LoginVBoxRechts{
+	-fx-background-radius: 0px;
+    -fx-background-color: #2196f3; 
+}
+
+.LoginLoginButton{
+	-fx-border-color: #DEDEE4;
+	-fx-border-width: 5px;
+	-fx-pref-width: 150px;
+	-fx-border-radius: 0px;
+	-fx-text-fill: white;
+	-fx-background-color: transparent;
+}
+.LoginLoginButton:hover{
+	-fx-border-color: yellow;
+	-fx-border-width: 5px;
+	-fx-background-color: transparent;
+	-fx-text-fill: yellow;
+	-fx-cursor: hand;
+}
+
+.LoginEingabeFelder{
+	-fx-background-color: transparent;
+	-fx-text-fill: whitesmoke;
+	-fx-prompt-text-fill: whitesmoke;
+	-fx-border-color: #DEDEE4;
+	-fx-border-width: 0px 0px 2px 0px;
+}
+.LoginRegistrationSwitch_header{
+	-fx-background-color: transparent;
+	-fx-max-width:300px;
+	-fx-max-height:50px;
+}
+.LoginRegistrationSwitch{
+	-fx-background-color: transparent;
+	-fx-text-fill: #FAFAFA;
+	-fx-font-weight: bold;
+	-fx-font-size:20px;
+}
+.LoginRegistrationSwitch:hover{
+	-fx-text-fill: #E0E0E0;
+	-fx-cursor: hand;
+}
+
+#exitButton {
+    -fx-background-color: white;
+    -fx-shape: "m580.47,489.03L960.48,109.01c23.43-23.43,23.43-61.42,0-84.85l-6.59-6.59c-23.43-23.43-61.42-23.43-84.85,0l-380.02,380.02L109.01,17.57c-23.43-23.43-61.42-23.43-84.85,0l-6.59,6.59c-23.43,23.43-23.43,61.42,0,84.85l380.02,380.02L17.57,869.04c-23.43,23.43-23.43,61.42,0,84.85l6.59,6.59c23.43,23.43,61.42,23.43,84.85,0l380.02-380.02,380.02,380.02c23.43,23.43,61.42,23.43,84.85,0l6.59-6.59c23.43-23.43,23.43-61.42,0-84.85l-380.02-380.02Z";
+}
+#exitButton:hover {
+
+    -fx-background-color: yellow;
+    -fx-cursor: hand;
+   
+}
+#LabelWrongRegistrierung{
+	-fx-text-fill: red;
+}
+

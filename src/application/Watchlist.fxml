@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="591.0" prefWidth="1125.0" style="-fx-background-color: white;" stylesheets="@application.css"
+ xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WatchlistController">
+   <children>
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="610.0" prefWidth="870.0">
+         <children>
+            <AnchorPane prefHeight="544.0" prefWidth="210.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="415.0" prefWidth="253.0" styleClass="LoginVBoxlinks" stylesheets="@application.css">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Deine Watchlist" textAlignment="CENTER" wrappingWidth="250.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Text>
+                        <Button fx:id="btWatchlistLaden" mnemonicParsing="false" onAction="#handleButtonWishlistLadenAction" 
+                        prefHeight="35.0" prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons" stylesheets="@application.css" text="Watchlist Laden" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="20.0" right="20.0" top="175.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btFilminformation" mnemonicParsing="false" onAction="#handleButtonInformationAction" 
+                        prefHeight="35.0" prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons"
+                        stylesheets="@application.css" text="Filminformationen" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btLöschen" mnemonicParsing="false" onAction="#handleButtonLöschenAction" 
+                        prefHeight="30.0" prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons" stylesheets="@application.css" text="Löschen" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btZurück" mnemonicParsing="false" onAction="#handleButtonZurück" 
+                        prefHeight="30.0" prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons" stylesheets="@application.css" text="Zurück" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="589.0" prefWidth="882.0" stylesheets="@application.css">
+               <children>
+                  <VBox layoutX="10.0" layoutY="25.0" prefHeight="400.0" prefWidth="872.0" styleClass="LoginVBoxRechts" stylesheets="@application.css">
+                     <children>
+                        <TableView fx:id="tabViewWatchliste" onMouseClicked="#handleButtonClickInformationAction" prefHeight="400.0" prefWidth="850.0">
+                          <columns>
+                            <TableColumn fx:id="tcTitel" prefWidth="229.59997540712357" text="Filmtitel" />
+                            <TableColumn fx:id="tcGenre" prefWidth="107.20001220703125" text="Genre" />
+                              <TableColumn fx:id="tcFsk" prefWidth="57.60003662109375" text="FSK" />
+                              <TableColumn fx:id="tcRelease" prefWidth="71.20001220703125" text="Release" />
+                              <TableColumn fx:id="tcSchauspieler" prefWidth="138.4000244140625" text="Schauspieler" />
+                              <TableColumn fx:id="tcRegisseur" prefWidth="115.99993896484375" text="Regisseur" />
+                              <TableColumn fx:id="tcStreaming" prefWidth="149.60003662109375" text="Streaming" />
+                          </columns>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

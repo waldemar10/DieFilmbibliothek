@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="620.0" prefWidth="880.0" stylesheets="@application.css"
+xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FilmansichtController">
+   <children>
+      <HBox layoutX="10.0" layoutY="10.0" prefHeight="610.0" prefWidth="870.0">
+         <children>
+            <AnchorPane prefHeight="502.0" prefWidth="260.0">
+               <children>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="585.0" prefWidth="252.0" styleClass="LoginVBoxlinks"
+                   stylesheets="@application.css">
+                     <children>
+                        <Text fx:id="txFilmname" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Filmname" textAlignment="CENTER"
+                         wrappingWidth="250.0">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Text>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fx:id="imageView" fitHeight="310.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport></ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btLaden" mnemonicParsing="false" onAction="#handleLadenButton" prefHeight="35.0" 
+                        prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons" 
+                        stylesheets="@application.css" text="Filmdaten Laden" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btStreaming" mnemonicParsing="false" onMouseClicked="#handleStreamingButton" 
+                        prefHeight="35.0" prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons" 
+                        stylesheets="@application.css" text="Streaming" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btZurück" mnemonicParsing="false" onAction="#handleButtonZurück" prefHeight="30.0"
+                         prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons" 
+                         stylesheets="@application.css" text="Zurück" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="50.0" />
+                           </VBox.margin>
+                        </Button>
+                        <HBox prefHeight="20.0" prefWidth="252.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="502.0" prefWidth="581.0" stylesheets="@application.css">
+               <children>
+                  <VBox layoutX="10.0" layoutY="25.0" prefHeight="560.0" prefWidth="581.0" style="-fx-background-color: white;" 
+                  styleClass="LoginVBoxRechts" stylesheets="@application.css">
+                     <children>
+                        <HBox prefHeight="5.0" prefWidth="581.0" />
+                        <HBox prefHeight="30.0" prefWidth="581.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filminformationen" wrappingWidth="220.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="581.0">
+                           <children>
+                              <TextArea fx:id="tfFilmtitel" editable="false" prefHeight="40.0" prefWidth="200.0" 
+                              style="-fx-border-color: #4D4D4D; -fx-border-radius: 5;" text="Filmtitel&#10;" wrapText="true">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" />
+                                 </HBox.margin>
+                              </TextArea>
+                              <TextField fx:id="tfJahr" editable="false" prefHeight="25.0" prefWidth="50.0" 
+                              style="-fx-border-color: #4D4D4D; -fx-border-radius: 5;" text="Jahr">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="46.0" prefWidth="582.0">
+                           <children>
+                              <TextField fx:id="tfFsk" editable="false" prefHeight="27.0" prefWidth="40.0" 
+                              style="-fx-border-color: #4D4D4D; -fx-border-radius: 5;" text="FSK">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="tfRelease" editable="false" prefHeight="27.0" prefWidth="78.0" 
+                              style="-fx-border-color: #4D4D4D; -fx-border-radius: 5;" text="Datum">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="tfGenre" editable="false" prefHeight="27.0" prefWidth="100.0" 
+                              style="-fx-border-color: #4D4D4D; -fx-border-radius: 5;" text="Genre">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="tfLaufzeit" editable="false" prefHeight="25.0" prefWidth="75.0" 
+                              style="-fx-border-color: #4D4D4D; -fx-border-radius: 5;" text="Laufzeit">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="581.0">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Button fx:id="btTrailer" mnemonicParsing="false" onMouseClicked="#handleMouseClickTrailer" styleClass="hover"
+                              style="-fx-background-color: transparent; -fx-border-color: #3D5AFE; -fx-border-width: 5; -fx-border-radius: 10;"
+                               text="Trailer">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btWatchlistSpeichern" depthTest="ENABLE" mnemonicParsing="false"
+                               onAction="#handleButtonWatchlistAction" styleClass="hover"
+                               style="-fx-background-color: transparent; -fx-border-color: #3D5AFE; -fx-border-width: 5; -fx-border-radius: 10;"
+                                text="zur Watchlist hinzufügen">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="581.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="130.0" 
+                              style="-fx-background-color: #4D4D4D; -fx-background-radius: 5;" text="Regisseur" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="130.0" 
+                              style="-fx-background-color: #4D4D4D; -fx-background-radius: 5;" text="Hauptdarsteller" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="581.0">
+                           <children>
+                              <TextField fx:id="tfRegisseur" alignment="CENTER" editable="false" prefHeight="25.0"
+                               prefWidth="130.0" style="-fx-background-color: transparent;">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <TextField fx:id="tfSchauspieler" alignment="CENTER" editable="false" prefHeight="25.0"
+                               prefWidth="130.0" style="-fx-background-color: transparent;">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="581.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="70.0"
+                               style="-fx-background-color: #4D4D4D; -fx-background-radius: 5;" text="Handlung" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="210.0" prefWidth="581.0">
+                           <children>
+                              <TextArea fx:id="taHandlung" editable="false" prefHeight="210.0"
+                               prefWidth="553.0" style="-fx-border-color: #4D4D4D;" text="Es war einmal...." wrapText="true">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextArea>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

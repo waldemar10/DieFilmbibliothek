@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="800.0" stylesheets="@application.css"
+ xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegistrierungController">
+
+      <HBox prefHeight="500.0" prefWidth="800.0">
+      
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="500.0" prefWidth="800.0" stylesheets="@application.css">
+                 
+                        <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="480.0">
+                           
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="480.0">
+                  
+                              <Button fx:id="btBack" mnemonicParsing="false" onAction="#loadLogin" prefWidth="105.0" 
+                              styleClass="LoginRegistrationSwitch" stylesheets="@application.css" text="Login">
+                                 
+                              </Button>
+                              <Button fx:id="registrierenButtonHeader" mnemonicParsing="false" prefWidth="145.0" 
+                              styleClass="LoginRegistrationSwitch" stylesheets="@application.css" style="-fx-text-fill: #3D5AFE;" text="Registrieren">
+                                 
+                              </Button>
+                      
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="tfUsername" prefHeight="25.0" prefWidth="250.0" promptText="Benutzername" styleClass="LoginEingabeFelder" stylesheets="@application.css">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
+                  
+                              <Text fx:id="txBenutzerFehler" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0" />
+                        
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                    
+                              <TextField fx:id="tfEmail" prefHeight="25.0" prefWidth="250.0" promptText="Email" 
+                              styleClass="LoginEingabeFelder" stylesheets="@application.css">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </TextField>
+                      
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
+                       
+                              <Text fx:id="txEmailFehler" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0" />
+                      
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                      
+                              <TextField fx:id="loginUsername11" prefHeight="25.0" prefWidth="250.0" promptText="Email wiederholung" 
+                              styleClass="LoginEingabeFelder" stylesheets="@application.css">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </TextField>
+                       
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
+                         
+                              <Text fx:id="txEmailWiederholung" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0" />
+                        
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                       
+                              <PasswordField fx:id="pfPassword" prefWidth="250.0" promptText="Passwort" styleClass="LoginEingabeFelder">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </PasswordField>
+                     
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
+                      
+                              <Text fx:id="txPasswortFehler" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="250.0" />
+                       
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                         
+                              <PasswordField fx:id="loginPasswortfield1" prefWidth="250.0" promptText="Passwort wiederholung" 
+                              styleClass="LoginEingabeFelder">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </PasswordField>
+                          
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
+                         
+                              <Label fx:id="LabelWrongRegistrierung" />
+                         
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                         
+                              <Button fx:id="btRegistrierung" mnemonicParsing="false" onAction="#handleButtonRegistrierungAction" prefWidth="250.0" 
+                              styleClass="buttons" stylesheets="@application.css" text="Registrieren" >
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                       
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                    
+                    
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+       
+     
+    
+      </HBox>
+
+</AnchorPane>

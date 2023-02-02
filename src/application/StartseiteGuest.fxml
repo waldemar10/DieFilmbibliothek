@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StartseiteGuestController">
+   <children>
+      <BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #2196f3;" stylesheets="@application.css">
+         <center>
+            <AnchorPane prefHeight="620.0" prefWidth="880.0" style="-fx-background-color: #212121;" stylesheets="@application.css" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="600.0" prefWidth="880.0" style="-fx-background-color:#212121 ;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="880.0">
+                           <children>
+                              <TextField fx:id="tfSuche" prefHeight="25.0" prefWidth="750.0" promptText="Film suchen..." />
+                              <Button fx:id="Suchen" mnemonicParsing="false" onAction="#handleButtonSucheAction" 
+                              prefHeight="25.0" prefWidth="100.0" styleClass="button_suche" text="Suchen" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="-100.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <TabPane fx:id="tpStartseiteGuest" prefHeight="450.0" prefWidth="880.0" styleClass="table_view" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab fx:id="tbFilmbibliothek" text="Filmbibliothek">
+                                 <content>
+                                    <AnchorPane prefHeight="430.0" prefWidth="714.0" stylesheets="@application.css">
+                                       <children>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                          <fx:include source="DatenbankFilmeWindow.fxml" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                            <Tab fx:id="tbSuchleiste" text="Suchleiste">
+                                 <content>
+                                    <ListView fx:id="lwListView" onMouseClicked="#handleMouseClick" prefHeight="200.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+         </center>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" BorderPane.alignment="CENTER" />
+         </right>
+         <top>
+            <HBox prefHeight="70.0" prefWidth="1280.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: transparent;">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Image/LogoFilmbibliothek.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  
+                  
+               
+                  
+                  
+                  <HBox alignment="CENTER_RIGHT" layoutX="1000.0" prefWidth="1000">
+                    
+                        <Button mnemonicParsing="false" onAction="#loadAnmelden" prefHeight="70.0" prefWidth="100.0" styleClass="hover"
+                        style="-fx-background-color: transparent; -fx-text-fill: white" text="Anmelden">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#loadRegistrieren" prefHeight="70.0" prefWidth="100.0" styleClass="hover"
+                        style="-fx-background-color: transparent; -fx-text-fill: white" text="Registrieren">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                  </HBox>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
