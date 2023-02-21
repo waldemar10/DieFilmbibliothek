@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -99,6 +100,9 @@ public class RegistrierungController {
 		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("StartseiteGuest.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		Stage stage = new Stage ();
+		String pfad = "/Image/LogoFilmbibliothek.png";
+		Image image = new Image(pfad);
+		stage.getIcons().add(image);
 		stage.setTitle("Startseite Gast");
 		stage.setScene(new Scene(root));
 		stage.show();

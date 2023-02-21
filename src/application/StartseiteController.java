@@ -20,6 +20,7 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -63,6 +64,9 @@ public class StartseiteController {
 			e.printStackTrace();
 		}
 		Stage stage = new Stage();
+		String pfad = "/Image/LogoFilmbibliothek.png";
+		Image image = new Image(pfad);
+		stage.getIcons().add(image);
 		stage.setTitle("Mein Profil");
 		stage.setScene(new Scene(root));
 		stage.show();
@@ -81,6 +85,9 @@ public class StartseiteController {
 				e.printStackTrace();
 			}
 			Stage stage = new Stage();
+			String pfad = "/Image/LogoFilmbibliothek.png";
+			Image image = new Image(pfad);
+			stage.getIcons().add(image);
 			stage.setTitle("Watchlist");
 			stage.setScene(new Scene(root));
 			stage.show();
@@ -120,6 +127,9 @@ public class StartseiteController {
 								e.printStackTrace();
 							}
 							Stage stage = new Stage();
+							String pfad = "/Image/LogoFilmbibliothek.png";
+							Image image = new Image(pfad);
+							stage.getIcons().add(image);
 							stage.setTitle("Filmansicht: " + FilmeTitel.get(i));
 							stage.setScene(new Scene(root));
 							stage.show();

@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Parent;
@@ -17,6 +18,9 @@ import javafx.fxml.FXMLLoader;
 			primaryStage.setResizable(false);
 			Scene scene=new Scene(root, 800,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			String pfad = "/Image/LogoFilmbibliothek.png";
+			Image image = new Image(pfad);
+			primaryStage.getIcons().add(image);
 			primaryStage.setTitle("Login");
 			primaryStage.setScene(scene);
 			primaryStage.show();

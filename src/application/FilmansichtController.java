@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -82,6 +83,9 @@ public class FilmansichtController implements Initializable {
 					e.printStackTrace();
 				}
 				Stage stage = new Stage();
+				String pfad = "/Image/LogoFilmbibliothek.png";
+				Image image = new Image(pfad);
+				stage.getIcons().add(image);
 				stage.setTitle("Startseite");
 				stage.setScene(new Scene(root));
 				stage.show();
@@ -100,6 +104,9 @@ public class FilmansichtController implements Initializable {
 					e.printStackTrace();
 				}
 				Stage stage = new Stage();
+				String pfad = "/Image/LogoFilmbibliothek.png";
+				Image image = new Image(pfad);
+				stage.getIcons().add(image);
 				stage.setTitle("Startseite Gast");
 				stage.setScene(new Scene(root));
 				stage.show();
@@ -111,6 +118,7 @@ public class FilmansichtController implements Initializable {
 	}
 
 	public void handleLadenButton(ActionEvent event) {
+
 		ArrayList<String> FilmeSuche = new ArrayList<>();
 		ArrayList<String> FilmeExtra = new ArrayList<>();
 		
@@ -118,8 +126,9 @@ public class FilmansichtController implements Initializable {
 		Node node = (Node) event.getSource();
 		Stage thisStage = (Stage) node.getScene().getWindow();
 		headline = thisStage.getTitle().substring(13);
-
 		Sortieren.Filmeauslesen(FilmeSuche);
+		System.out.println(FilmeSuche);
+
 		int gefunden = SuchFunktion.lineareSuche(FilmeSuche, headline);
 		int stelleFilmtitel = gefunden + 0;
 		int stelleGenre = gefunden + 1;
@@ -128,15 +137,16 @@ public class FilmansichtController implements Initializable {
 		int stelleSchauspieler = gefunden + 4;
 		int stelleRegisseur = gefunden + 5;
 		int stelleStreaming = gefunden + 6;
-		
+
 		DataFilm.FilmeExtraAuslesen(FilmeExtra);
+		System.out.println("Extra: "+FilmeExtra);
 		int gefundenFilmeExtra = SuchFunktion.lineareSuche(FilmeExtra, headline);
 		int stelleHandlung = gefundenFilmeExtra + 2;
 		int stelleImage = gefundenFilmeExtra + 3;
 		int stelleLaufzeit = gefundenFilmeExtra + 4;
-		
-		String pfad = FilmeExtra.get(stelleImage);
-		Image image = new Image(pfad);
+
+
+
 		tfSchauspieler.setText(FilmeSuche.get(stelleSchauspieler));
 		tfRegisseur.setText(FilmeSuche.get(stelleRegisseur));
 		tfFilmtitel.setText(FilmeSuche.get(stelleFilmtitel));
@@ -148,7 +158,14 @@ public class FilmansichtController implements Initializable {
 		taHandlung.setText(FilmeExtra.get(stelleHandlung));
 		tfLaufzeit.setText(FilmeExtra.get(stelleLaufzeit));
 		txFilmname.setText(FilmeSuche.get(stelleFilmtitel));
+
+		String pfad = FilmeExtra.get(stelleImage);
+		Image image = new Image(pfad);
 		imageView.setImage(image);
+
+
+
+
 		btStreaming.setVisible(true);
 		btTrailer.setVisible(true);
 		if (LoginController.loginTest == true) {

@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -88,6 +89,9 @@ public class WatchlistController {
 						e.printStackTrace();
 					}
 					Stage stage = new Stage();
+					String pfad = "/Image/LogoFilmbibliothek.png";
+					Image image = new Image(pfad);
+					stage.getIcons().add(image);
 					stage.setTitle("Filmansicht: " + FilmeTitel.get(i));
 					stage.setScene(new Scene(root));
 					stage.show();
@@ -98,22 +102,22 @@ public class WatchlistController {
 
 	public void handleButtonLöschenAction(ActionEvent event) {
 		if (titel != null) {
-			// Abfragen, ob man wirklich l�schen m�chte
-			int eingabe = JOptionPane.showConfirmDialog(null, "M�chten Sie wirklich \n" + titel + " l�schen?",
-					"L�schen", JOptionPane.OK_CANCEL_OPTION);
+			// Abfragen, ob man wirklich löschen möchte
+			int eingabe = JOptionPane.showConfirmDialog(null, "Möchten Sie wirklich \n" + titel + " löschen?",
+					"Löschen", JOptionPane.OK_CANCEL_OPTION);
 			if (eingabe == 0) { // Wenn auf OK geklickt wird
 				ArrayList<String> WatchlistMerke = new ArrayList<>();
 				File watchlistAnwender = new File("WatchlistAnwender/Watchlist von " + LoginController.benutzername);
-				// L�schen aus der TableView
+				// Löschen aus der TableView
 				data.DatenbankFilme ausgewählteReihe = tabViewWatchliste.getSelectionModel().getSelectedItem();
 				tabViewWatchliste.getItems().remove(ausgewählteReihe);
-				// Speichern ohne des gel�schten Titels
+				// Speichern ohne des gelöschten Titels
 				Watchlist.WatchlisteLesenLöschen(WatchlistMerke, watchlistAnwender, titel);
-				// Datei l�schen
+				// Datei löschen
 				watchlistAnwender.delete();
 				// Datei neu erstellen
 				Watchlist.watchlistDatei(watchlistAnwender);
-				// Datei bef�llen
+				// Datei befüllen
 				for (int i = 0; i < WatchlistMerke.size(); i++) {
 					Watchlist.watchlistSpeichernBeiLöschen(WatchlistMerke.get(i), watchlistAnwender);
 				}
@@ -178,10 +182,13 @@ public class WatchlistController {
 			try {
 				root = (Parent) fxmlLoader.load();
 			} catch (IOException e) {
-				System.out.println("Fehler beim �ffnen der Startseite.fxml");
+				System.out.println("Fehler beim öffnen der Startseite.fxml");
 				e.printStackTrace();
 			}
 			Stage stage = new Stage();
+			String pfad = "/Image/LogoFilmbibliothek.png";
+			Image image = new Image(pfad);
+			stage.getIcons().add(image);
 			stage.setTitle("Startseite");
 			stage.setScene(new Scene(root));
 			stage.show();

@@ -74,7 +74,7 @@ public class AdminToolController implements Initializable {
 	public static String titel;
 	/*
 	 * @FXML void bildUpload(ActionEvent event) { FileChooser fc = new
-	 * FileChooser(); fc.setTitle("Bild ausw�hlen"); File file =
+	 * FileChooser(); fc.setTitle("Bild auswählen"); File file =
 	 * fc.showOpenDialog(null); tfSpeicherpfad.appendText(file.getAbsolutePath());;
 	 * 
 	 * 
@@ -131,7 +131,7 @@ public class AdminToolController implements Initializable {
 		DataFilm.FilmeExtra.delete();
 
 		DataFilm.dateiErstellen();
-		// Speicher an der Position des ge�nderten Films die Werte ein
+		// Speicher an der Position des geänderten Films die Werte ein
 		for (int i = 0; i < AdminToolUpdateFilm.size(); i++) {
 			String zusatzTitel = ("Filmtitel:" + titel);
 			if (zusatzTitel.equals(AdminToolUpdateFilm.get(i))) {
@@ -144,13 +144,13 @@ public class AdminToolController implements Initializable {
 				AdminToolUpdateFilm.set(i + 6, "Streaming:" + tfStreaminganbieter.getText());
 			}
 		}
-		// Speichern des ge�nderten Films in die Datei Filme
+		// Speichern des geänderten Films in die Datei Filme
 		for (int i = 0; i < AdminToolUpdateFilm.size(); i += 7) {
 			DataFilm.filmSpeichernOhneZeile(AdminToolUpdateFilm.get(i), AdminToolUpdateFilm.get(i + 1),
 					AdminToolUpdateFilm.get(i + 2), AdminToolUpdateFilm.get(i + 3), AdminToolUpdateFilm.get(i + 4),
 					AdminToolUpdateFilm.get(i + 5), AdminToolUpdateFilm.get(i + 6));
 		}
-		// Speicher an der Position des ge�nderten Films die Werte ein, f�r die
+		// Speicher an der Position des geänderten Films die Werte ein, für die
 		// FilmExtra Datei
 		for (int i = 0; i < AdminToolUpdateFilmExtra.size(); i++) {
 			if (titel.equals(AdminToolUpdateFilmExtra.get(i))) {
@@ -161,7 +161,7 @@ public class AdminToolController implements Initializable {
 				AdminToolUpdateFilmExtra.set(i + 4, tfLaufzeit.getText());
 			}
 		}
-		// Speichern des ge�nderten Films in die Datei FilmeExtra
+		// Speichern des geänderten Films in die Datei FilmeExtra
 		for (int i = 0; i < AdminToolUpdateFilmExtra.size(); i += 5) {
 			DataFilm.filmExtraSpeichernOhneZeile(AdminToolUpdateFilmExtra.get(i), AdminToolUpdateFilmExtra.get(i + 1),
 					AdminToolUpdateFilmExtra.get(i + 2), AdminToolUpdateFilmExtra.get(i + 3),
@@ -236,24 +236,24 @@ public class AdminToolController implements Initializable {
 		 
 	 }
 	public void handleButtonLöschenAction(ActionEvent event) {
-		// Abfragen, ob man wirklich l�schen m�chte
+		// Abfragen, ob man wirklich löschen möchte
 		if (titel != null) {
-			int eingabe = JOptionPane.showConfirmDialog(null, "M�chten Sie wirklich \n" + titel + " l�schen?",
-					"L�schen", JOptionPane.OK_CANCEL_OPTION);
+			int eingabe = JOptionPane.showConfirmDialog(null, "Möchten Sie wirklich \n" + titel + " löschen?",
+					"Löschen", JOptionPane.OK_CANCEL_OPTION);
 			if (eingabe == 0) { // Wenn auf OK geklickt wird
 
 				ArrayList<String> FilmMerke = new ArrayList<>();
 				ArrayList<String> FilmExtraMerke = new ArrayList<>();
 
-				// L�schen aus der ListView
+				// Löschen aus der ListView
 				String ausgewählteReihe = lwListViewFilme.getSelectionModel().getSelectedItem();
 				lwListViewFilme.getItems().remove(ausgewählteReihe);
 
-				// Speichern der Inhalte der Datei, au�er des gel�schten Titels
+				// Speichern der Inhalte der Datei, außer des gelöschten Titels
 				DataFilm.FilmLesenLöschen(FilmMerke, DataFilm.FilmDaten, titel);
 				DataFilm.FilmExtraLesenLöschen(FilmExtraMerke, DataFilm.FilmeExtra, titel);
 
-				// L�schen der Datei
+				// Löschen der Datei
 				DataFilm.FilmDaten.delete();
 				DataFilm.FilmeExtra.delete();
 
@@ -277,13 +277,13 @@ public class AdminToolController implements Initializable {
 					String benutzername = LoginDaten.get(k);
 					ArrayList<String> WatchlistMerke = new ArrayList<>();
 					File watchlistAnwender = new File("WatchlistAnwender/Watchlist von " + benutzername);
-					// Speichern ohne des gel�schten Titels
+					// Speichern ohne des gelöschten Titels
 					Watchlist.WatchlisteLesenLöschen(WatchlistMerke, watchlistAnwender, titel);
-					// Datei l�schen
+					// Datei löschen
 					watchlistAnwender.delete();
 					// Datei erstellen
 					Watchlist.watchlistDatei(watchlistAnwender);
-					// Datei wieder bef�llen
+					// Datei wieder befüllen
 					for (int i = 0; i < WatchlistMerke.size(); i++) {
 						Watchlist.watchlistSpeichernBeiLöschen(WatchlistMerke.get(i), watchlistAnwender);
 					}

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 
@@ -104,14 +105,21 @@ public class DatenbankFilmeController implements Initializable {
 				for (int i = 0; i < count; i += 7) {
 
 					String filmtitel = randomAccessFile3.readLine().substring(10);
+					String lineTitel = new String(filmtitel.getBytes("ISO-8859-1"), "UTF-8");
 					String genre = randomAccessFile3.readLine().substring(6);
+					String lineGenre = new String(genre.getBytes("ISO-8859-1"), "UTF-8");
 					String fsk = randomAccessFile3.readLine().substring(4);
+					String lineFSK = new String(fsk.getBytes("ISO-8859-1"), "UTF-8");
 					String release = randomAccessFile3.readLine().substring(8);
+					String lineRelease = new String(release.getBytes("ISO-8859-1"), "UTF-8");
 					String schauspieler = randomAccessFile3.readLine().substring(13);
+					String lineSchauspieler = new String(schauspieler.getBytes("ISO-8859-1"), "UTF-8");
 					String regisseur = randomAccessFile3.readLine().substring(10);
+					String lineRegisseur = new String(regisseur.getBytes("ISO-8859-1"), "UTF-8");
 					String streaming = randomAccessFile3.readLine().substring(10);
-					list.add(new DatenbankFilme(filmtitel, genre, fsk, release, schauspieler, regisseur,
-							streaming));
+					String lineStreaming = new String(streaming.getBytes("ISO-8859-1"), "UTF-8");
+					list.add(new DatenbankFilme(lineTitel, lineGenre, lineFSK, lineRelease, lineSchauspieler, lineRegisseur,
+							lineStreaming));
 				}
 			}
 		} catch (FileNotFoundException ex) {

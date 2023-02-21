@@ -22,6 +22,7 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -64,6 +65,9 @@ public class StartseiteGuestController {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
+		String pfad = "/Image/LogoFilmbibliothek.png";
+		Image image = new Image(pfad);
+		stage.getIcons().add(image);
 		stage.setTitle("Main Window");
 		stage.setScene(new Scene(root));
 		stage.show();
@@ -77,6 +81,9 @@ public class StartseiteGuestController {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Registration.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		Stage stage = new Stage();
+		String pfad = "/Image/LogoFilmbibliothek.png";
+		Image image = new Image(pfad);
+		stage.getIcons().add(image);
 		stage.setTitle("Main Window");
 		stage.setScene(new Scene(root));
 		stage.show();
@@ -111,10 +118,13 @@ public class StartseiteGuestController {
 							try {
 								root = (Parent) fxmlLoader.load();
 							} catch (IOException e) {
-								System.out.println("Fehler beim �ffnen der FilmansichtWindow.fxml");
+								System.out.println("Fehler beim öffnen der FilmansichtWindow.fxml");
 								e.printStackTrace();
 							}
 							Stage stage = new Stage();
+							String pfad = "/Image/LogoFilmbibliothek.png";
+							Image image = new Image(pfad);
+							stage.getIcons().add(image);
 							stage.setTitle("Filmansicht: " + FilmeTitel.get(i));
 							stage.setScene(new Scene(root));
 							stage.show();

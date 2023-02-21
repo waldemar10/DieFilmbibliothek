@@ -206,11 +206,13 @@ public class DataFilm {
 				for (int i = 0; i < count; i += 5) {
 
 					String sucheTitel = randomAccessFile3.readLine();
-					filme.add(sucheTitel);
+					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(lineTitel);
 					String sucheLink = randomAccessFile3.readLine();
 					filme.add(sucheLink);
 					String sucheHandlung = randomAccessFile3.readLine();
-					filme.add(sucheHandlung);
+					String lineHandlung = new String(sucheHandlung.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(lineHandlung);
 					String sucheImage = randomAccessFile3.readLine();
 					filme.add(sucheImage);
 					String sucheLaufzeit = randomAccessFile3.readLine();
@@ -235,7 +237,8 @@ public class DataFilm {
 				for (int i = 0; i < count; i += 7) {
 
 					String sucheTitel = randomAccessFile3.readLine().substring(10);
-					filme.add(sucheTitel);
+					String line = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(line);
 					for (int j = 0; j < 6; j++) {
 						randomAccessFile3.readLine();
 					}
@@ -261,7 +264,8 @@ public class DataFilm {
 					randomAccessFile3.readLine().substring(10);
 
 					String sucheGenre = randomAccessFile3.readLine().substring(6);
-					filme.add(sucheGenre);
+					String line = new String(sucheGenre.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(line);
 					for (int j = 0; j < 5; j++) {
 						randomAccessFile3.readLine(); // Zeiger versetzen, um ihn immer an der richtigen Stelle zu haben
 					}
@@ -288,7 +292,8 @@ public class DataFilm {
 					randomAccessFile3.readLine();
 
 					String sucheFSK = randomAccessFile3.readLine().substring(4);
-					filme.add(sucheFSK);
+					String line = new String(sucheFSK.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(line);
 					for (int j = 0; j < 4; j++) {
 						randomAccessFile3.readLine();
 					}
@@ -315,7 +320,8 @@ public class DataFilm {
 					}
 
 					String sucheRelease = randomAccessFile3.readLine().substring(8);
-					filme.add(sucheRelease);
+					String line = new String(sucheRelease.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(line);
 
 					for (int j = 0; j < 3; j++) {
 						randomAccessFile3.readLine();
@@ -344,7 +350,8 @@ public class DataFilm {
 					}
 
 					String sucheSchauspieler = randomAccessFile3.readLine().substring(13);
-					filme.add(sucheSchauspieler);
+					String line = new String(sucheSchauspieler.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(line);
 					for (int j = 0; j < 2; j++) {
 						randomAccessFile3.readLine();
 					}
@@ -372,7 +379,8 @@ public class DataFilm {
 					}
 
 					String sucheRegisseur = randomAccessFile3.readLine().substring(10);
-					filme.add(sucheRegisseur);
+					String line = new String(sucheRegisseur.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(line);
 
 					randomAccessFile3.readLine(); // Streaming �berspringen
 
@@ -399,7 +407,8 @@ public class DataFilm {
 					}
 
 					String sucheStreaming = randomAccessFile3.readLine().substring(10);
-					filme.add(sucheStreaming);
+					String line = new String(sucheStreaming.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(line);
 
 				}
 			}
@@ -422,24 +431,31 @@ public class DataFilm {
 				for (int i = 0; i < count - 7; i += 7) {
 
 					String sucheTitel = randomAccessFile.readLine();
+					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheGenre = randomAccessFile.readLine();
+					String lineGenre = new String(sucheGenre.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheFSK = randomAccessFile.readLine();
+					String lineFSK = new String(sucheFSK.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRelease = randomAccessFile.readLine();
+					String lineRelease = new String(sucheRelease.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheSchauspieler = randomAccessFile.readLine();
+					String lineSchauspieler = new String(sucheSchauspieler.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRegisseur = randomAccessFile.readLine();
+					String lineRegisseur = new String(sucheRegisseur.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheStreaming = randomAccessFile.readLine();
+					String lineStreaming = new String(sucheStreaming.getBytes("ISO-8859-1"), "UTF-8");
 
 					if (sucheTitel.equals("Filmtitel:" + löschen)) { // Findet den Titel der gel�scht werden muss
 
 					} else {
 
-						filme.add(sucheTitel); // Speichert die restlichen Sachen, die nicht gel�scht werden sollen
-						filme.add(sucheGenre);
-						filme.add(sucheFSK);
-						filme.add(sucheRelease);
-						filme.add(sucheSchauspieler);
-						filme.add(sucheRegisseur);
-						filme.add(sucheStreaming);
+						filme.add(lineTitel); // Speichert die restlichen Sachen, die nicht gel�scht werden sollen
+						filme.add(lineGenre);
+						filme.add(lineFSK);
+						filme.add(lineRelease);
+						filme.add(lineSchauspieler);
+						filme.add(lineRegisseur);
+						filme.add(lineStreaming);
 
 					}
 				}
@@ -459,8 +475,10 @@ public class DataFilm {
 			try (RandomAccessFile randomAccessFile = new RandomAccessFile(filmliste, "r")) {
 				for (int i = 0; i < count - 5; i += 5) {
 					String sucheTitel = randomAccessFile.readLine();
+					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheTrailer = randomAccessFile.readLine();
 					String sucheHandlung = randomAccessFile.readLine();
+					String lineHandlung = new String(sucheHandlung.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheImage = randomAccessFile.readLine();
 					String sucheLaufzeit = randomAccessFile.readLine();
 
@@ -468,9 +486,9 @@ public class DataFilm {
 
 					} else {
 
-						filme.add(sucheTitel);
+						filme.add(lineTitel);
 						filme.add(sucheTrailer);
-						filme.add(sucheHandlung);
+						filme.add(lineHandlung);
 						filme.add(sucheImage);
 						filme.add(sucheLaufzeit);
 
@@ -498,19 +516,26 @@ public class DataFilm {
 				for (int i = 0; i < count; i += 7) {
 
 					String sucheTitel = randomAccessFile.readLine();
+					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheGenre = randomAccessFile.readLine();
+					String lineGenre = new String(sucheGenre.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheFSK = randomAccessFile.readLine();
+					String lineFSK = new String(sucheFSK.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRelease = randomAccessFile.readLine();
+					String lineRelease = new String(sucheRelease.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheSchauspieler = randomAccessFile.readLine();
+					String lineSchauspieler = new String(sucheSchauspieler.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRegisseur = randomAccessFile.readLine();
+					String lineRegisseur = new String(sucheRegisseur.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheStreaming = randomAccessFile.readLine();
-					filme.add(sucheTitel);
-					filme.add(sucheGenre);
-					filme.add(sucheFSK);
-					filme.add(sucheRelease);
-					filme.add(sucheSchauspieler);
-					filme.add(sucheRegisseur);
-					filme.add(sucheStreaming);
+					String lineStreaming = new String(sucheStreaming.getBytes("ISO-8859-1"), "UTF-8");
+					filme.add(lineTitel);
+					filme.add(lineGenre);
+					filme.add(lineFSK);
+					filme.add(lineRelease);
+					filme.add(lineSchauspieler);
+					filme.add(lineRegisseur);
+					filme.add(lineStreaming);
 
 				}
 			}
@@ -529,14 +554,16 @@ public class DataFilm {
 				for (int i = 0; i < count; i += 5) {
 
 					String sucheTitel = randomAccessFile.readLine();
+					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheTrailer = randomAccessFile.readLine();
 					String sucheHandlung = randomAccessFile.readLine();
+					String lineHandlung = new String(sucheHandlung.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheImage = randomAccessFile.readLine();
 					String sucheLaufzeit = randomAccessFile.readLine();
 
-					filme.add(sucheTitel);
+					filme.add(lineTitel);
 					filme.add(sucheTrailer);
-					filme.add(sucheHandlung);
+					filme.add(lineHandlung);
 					filme.add(sucheImage);
 					filme.add(sucheLaufzeit);
 

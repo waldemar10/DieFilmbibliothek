@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 public class ProfilController implements Initializable {
@@ -62,6 +63,9 @@ public class ProfilController implements Initializable {
 			FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("Startseite.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
 			Stage stage = new Stage ();
+			String pfad = "/Image/LogoFilmbibliothek.png";
+			Image image = new Image(pfad);
+			stage.getIcons().add(image);
 			stage.setTitle("Main Window");
 			stage.setScene(new Scene(root));
 			stage.show();
@@ -77,6 +81,9 @@ public class ProfilController implements Initializable {
 		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("LoginStartscreen.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		Stage stage = new Stage ();
+		String pfad = "/Image/LogoFilmbibliothek.png";
+		Image image = new Image(pfad);
+		stage.getIcons().add(image);
 		stage.setTitle("Main Window");
 		stage.setScene(new Scene(root));
 		stage.show();

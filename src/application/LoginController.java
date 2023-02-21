@@ -79,7 +79,7 @@ public class LoginController {
 					FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("AdminToolWindow.fxml"));
 					Parent root = (Parent) fxmlLoader.load();
 					Stage stage = new Stage ();
-					String pfad = "https://cdn3.iconfinder.com/data/icons/inficons/512/apple.png";
+					String pfad = "/Image/LogoFilmbibliothek.png";
 					Image image = new Image(pfad);
 					stage.getIcons().add(image);
 					stage.setTitle("Admin Tool");
@@ -105,6 +105,9 @@ public class LoginController {
 					FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("Startseite.fxml"));
 					Parent root = (Parent) fxmlLoader.load();
 					Stage stage = new Stage ();
+					String pfad = "/Image/LogoFilmbibliothek.png";
+					Image image = new Image(pfad);
+					stage.getIcons().add(image);
 					stage.setTitle("Startseite");
 					stage.setScene(new Scene(root));
 					stage.show();
@@ -145,6 +148,9 @@ public class LoginController {
 		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("StartseiteGuest.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 		Stage stage = new Stage ();
+		String pfad = "/Image/LogoFilmbibliothek.png";
+		Image image = new Image(pfad);
+		stage.getIcons().add(image);
 		stage.setTitle("Startseite Gast");
 		stage.setScene(new Scene(root));
 		stage.show();

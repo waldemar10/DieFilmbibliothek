@@ -5,6 +5,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Sortieren {
@@ -64,16 +68,19 @@ public class Sortieren {
 	}*/
 
 	public static void zeileZählen() {
-		try {
+		BufferedReader br;
+
 			count = 0;
-			try (BufferedReader br = new BufferedReader(new FileReader("Data/Filme"))) {
+			try  {
+				Path path = FileSystems.getDefault().getPath("Data", "Filme");
+				br = Files.newBufferedReader(path, StandardCharsets.UTF_8);
 				for (; br.readLine() != null;) {
 					count++;
 				}
 				br.close();
 			}
 			
-		} catch (FileNotFoundException e) {
+		 catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -342,7 +349,9 @@ public class Sortieren {
 	public static void Filmeauslesen(ArrayList<String> filme) {
 		BufferedReader br;
 		try {
-			br = new BufferedReader(new FileReader("Data/Filme"));
+			Path path = FileSystems.getDefault().getPath("Data", "Filme");
+			br = Files.newBufferedReader(path, StandardCharsets.UTF_8);
+			//br = new BufferedReader(new FileReader("Data/Filme"));
 		
 		zeileZählen();
 
