@@ -1,15 +1,16 @@
 package data;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class DataFilm {
 
-	public static File FilmDaten = new File("Data/Filme");
-	public static File FilmeExtra = new File("Data/FilmeExtra");
+	public static File FilmDaten = new File("Data/Filme.txt");
+	public static File FilmeExtra = new File("Data/FilmeExtra.txt");
 	public static int count;
 
 	public static void dateiErstellen() {
@@ -25,9 +26,9 @@ public class DataFilm {
 		} else {
 			try {
 				FilmDaten.createNewFile();
-				System.out.println("Eine neue Datei namens 'FilmDaten' wurde erstellt.");
+				System.out.println("Eine neue Datei namens 'FilmDaten.txt' wurde erstellt.");
 			} catch (IOException e) {
-				System.err.println("Fehler beim erstellen der Datei 'FilmDaten'.");
+				System.err.println("Fehler beim erstellen der Datei 'FilmDaten.txt'.");
 				e.printStackTrace();
 			}
 		}
@@ -35,9 +36,9 @@ public class DataFilm {
 		} else {
 			try {
 				FilmeExtra.createNewFile();
-				System.out.println("Eine neue Datei namens 'FilmeExtra' wurde erstellt.");
+				System.out.println("Eine neue Datei namens 'FilmeExtra.txt' wurde erstellt.");
 			} catch (IOException e) {
-				System.err.println("Fehler beim erstellen der Datei 'FilmeExtra'.");
+				System.err.println("Fehler beim erstellen der Datei 'FilmeExtra.txt'.");
 				e.printStackTrace();
 			}
 		}
@@ -76,7 +77,7 @@ public class DataFilm {
 	public static void filmSpeichern(String titel, String genre, String fsk, String release, String schauspieler,
 									 String regisseur, String streaming) {
 		// Notwendig bei der Class AdminToolController bei der Methode
-		// handleButtonHinzuf�genAction
+		// handleButtonHinzufügenAction
 		zeileZählen();
 		try {
 			try (RandomAccessFile randomAccessFile = new RandomAccessFile(FilmDaten, "rw")) {
@@ -189,7 +190,7 @@ public class DataFilm {
 
 	public static boolean filmKontrolle(ArrayList<String> filme, String filmtitel) {
 		// Notwendig bei der Class AdminToolController bei der Methode
-		// handleButtonHinzuf�genAction
+		// handleButtonHinzufügenAction
 		for (int i = 0; i < filme.size(); i++) {
 			if (filme.get(i).equals(filmtitel)) {
 				return true;
@@ -197,22 +198,63 @@ public class DataFilm {
 		}
 		return false;
 	}
+	public static void Filmeauslesen(ArrayList<String> filme) {
+
+		zeileZählen();
+		try {
+			try (RandomAccessFile randomAccessFile3 = new RandomAccessFile(FilmDaten, "r")) {
+
+				for (int i = 0; i < count; i += 7) {
+
+					String sucheTitel = randomAccessFile3.readLine().substring(10);
+					filme.add(sucheTitel);
+
+					String sucheGenre = randomAccessFile3.readLine().substring(6);
+					filme.add(sucheGenre);
+
+					String sucheFreigabe = randomAccessFile3.readLine().substring(4);
+					filme.add(sucheFreigabe);
+
+					String sucheRelease  = randomAccessFile3.readLine().substring(8);
+					filme.add(sucheRelease);
+
+					String sucheSchauspieler = randomAccessFile3.readLine().substring(13);
+					filme.add(sucheSchauspieler);
+
+					String sucheRegisseur = randomAccessFile3.readLine().substring(10);
+					filme.add(sucheRegisseur);
+
+					String sucheStreaming = randomAccessFile3.readLine().substring(10);
+					filme.add(sucheStreaming);
+
+				}
+			}
+
+		} catch (FileNotFoundException e) {
+			System.out.println("Fehler FileNotFoundException");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Fehler IOException");
+			e.printStackTrace();
+		}
+
+
+
+	}
 
 	public static boolean FilmeExtraAuslesen(ArrayList<String> filme) {
 		zeileZählenFilmeExtra();
-		// In einer ArrayList die ganze File von 'FilmeExtra' speichern
+		// In einer ArrayList die ganze File von 'FilmeExtra.txt' speichern
 		try {
 			try (RandomAccessFile randomAccessFile3 = new RandomAccessFile(FilmeExtra, "r")) {
 				for (int i = 0; i < count; i += 5) {
 
 					String sucheTitel = randomAccessFile3.readLine();
-					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(lineTitel);
+					filme.add(sucheTitel);
 					String sucheLink = randomAccessFile3.readLine();
 					filme.add(sucheLink);
 					String sucheHandlung = randomAccessFile3.readLine();
-					String lineHandlung = new String(sucheHandlung.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(lineHandlung);
+					filme.add(sucheHandlung);
 					String sucheImage = randomAccessFile3.readLine();
 					filme.add(sucheImage);
 					String sucheLaufzeit = randomAccessFile3.readLine();
@@ -237,8 +279,7 @@ public class DataFilm {
 				for (int i = 0; i < count; i += 7) {
 
 					String sucheTitel = randomAccessFile3.readLine().substring(10);
-					String line = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(line);
+					filme.add(sucheTitel);
 					for (int j = 0; j < 6; j++) {
 						randomAccessFile3.readLine();
 					}
@@ -264,8 +305,7 @@ public class DataFilm {
 					randomAccessFile3.readLine().substring(10);
 
 					String sucheGenre = randomAccessFile3.readLine().substring(6);
-					String line = new String(sucheGenre.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(line);
+					filme.add(sucheGenre);
 					for (int j = 0; j < 5; j++) {
 						randomAccessFile3.readLine(); // Zeiger versetzen, um ihn immer an der richtigen Stelle zu haben
 					}
@@ -292,8 +332,7 @@ public class DataFilm {
 					randomAccessFile3.readLine();
 
 					String sucheFSK = randomAccessFile3.readLine().substring(4);
-					String line = new String(sucheFSK.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(line);
+					filme.add(sucheFSK);
 					for (int j = 0; j < 4; j++) {
 						randomAccessFile3.readLine();
 					}
@@ -320,8 +359,7 @@ public class DataFilm {
 					}
 
 					String sucheRelease = randomAccessFile3.readLine().substring(8);
-					String line = new String(sucheRelease.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(line);
+					filme.add(sucheRelease);
 
 					for (int j = 0; j < 3; j++) {
 						randomAccessFile3.readLine();
@@ -350,8 +388,7 @@ public class DataFilm {
 					}
 
 					String sucheSchauspieler = randomAccessFile3.readLine().substring(13);
-					String line = new String(sucheSchauspieler.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(line);
+					filme.add(sucheSchauspieler);
 					for (int j = 0; j < 2; j++) {
 						randomAccessFile3.readLine();
 					}
@@ -379,10 +416,9 @@ public class DataFilm {
 					}
 
 					String sucheRegisseur = randomAccessFile3.readLine().substring(10);
-					String line = new String(sucheRegisseur.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(line);
+					filme.add(sucheRegisseur);
 
-					randomAccessFile3.readLine(); // Streaming �berspringen
+					randomAccessFile3.readLine(); // Streaming überspringen
 
 				}
 			}
@@ -407,8 +443,7 @@ public class DataFilm {
 					}
 
 					String sucheStreaming = randomAccessFile3.readLine().substring(10);
-					String line = new String(sucheStreaming.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(line);
+					filme.add(sucheStreaming);
 
 				}
 			}
@@ -422,7 +457,7 @@ public class DataFilm {
 		return false;
 	}
 
-	// F�r die L�schen-Funktion in der Class AdminToolController
+	// Für die Löschen-Funktion in der Class AdminToolController
 
 	public static void FilmLesenLöschen(ArrayList<String> filme, File filmliste, String löschen) {
 		zeileZählen();
@@ -431,31 +466,24 @@ public class DataFilm {
 				for (int i = 0; i < count - 7; i += 7) {
 
 					String sucheTitel = randomAccessFile.readLine();
-					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheGenre = randomAccessFile.readLine();
-					String lineGenre = new String(sucheGenre.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheFSK = randomAccessFile.readLine();
-					String lineFSK = new String(sucheFSK.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRelease = randomAccessFile.readLine();
-					String lineRelease = new String(sucheRelease.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheSchauspieler = randomAccessFile.readLine();
-					String lineSchauspieler = new String(sucheSchauspieler.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRegisseur = randomAccessFile.readLine();
-					String lineRegisseur = new String(sucheRegisseur.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheStreaming = randomAccessFile.readLine();
-					String lineStreaming = new String(sucheStreaming.getBytes("ISO-8859-1"), "UTF-8");
 
-					if (sucheTitel.equals("Filmtitel:" + löschen)) { // Findet den Titel der gel�scht werden muss
+					if (sucheTitel.equals("Filmtitel:" + löschen)) { // Findet den Titel der gelöscht werden muss
 
 					} else {
 
-						filme.add(lineTitel); // Speichert die restlichen Sachen, die nicht gel�scht werden sollen
-						filme.add(lineGenre);
-						filme.add(lineFSK);
-						filme.add(lineRelease);
-						filme.add(lineSchauspieler);
-						filme.add(lineRegisseur);
-						filme.add(lineStreaming);
+						filme.add(sucheTitel); // Speichert die restlichen Sachen, die nicht gelö�scht werden sollen
+						filme.add(sucheGenre);
+						filme.add(sucheFSK);
+						filme.add(sucheRelease);
+						filme.add(sucheSchauspieler);
+						filme.add(sucheRegisseur);
+						filme.add(sucheStreaming);
 
 					}
 				}
@@ -475,10 +503,8 @@ public class DataFilm {
 			try (RandomAccessFile randomAccessFile = new RandomAccessFile(filmliste, "r")) {
 				for (int i = 0; i < count - 5; i += 5) {
 					String sucheTitel = randomAccessFile.readLine();
-					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheTrailer = randomAccessFile.readLine();
 					String sucheHandlung = randomAccessFile.readLine();
-					String lineHandlung = new String(sucheHandlung.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheImage = randomAccessFile.readLine();
 					String sucheLaufzeit = randomAccessFile.readLine();
 
@@ -486,9 +512,9 @@ public class DataFilm {
 
 					} else {
 
-						filme.add(lineTitel);
+						filme.add(sucheTitel);
 						filme.add(sucheTrailer);
-						filme.add(lineHandlung);
+						filme.add(sucheHandlung);
 						filme.add(sucheImage);
 						filme.add(sucheLaufzeit);
 
@@ -516,27 +542,20 @@ public class DataFilm {
 				for (int i = 0; i < count; i += 7) {
 
 					String sucheTitel = randomAccessFile.readLine();
-					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheGenre = randomAccessFile.readLine();
-					String lineGenre = new String(sucheGenre.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheFSK = randomAccessFile.readLine();
-					String lineFSK = new String(sucheFSK.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRelease = randomAccessFile.readLine();
-					String lineRelease = new String(sucheRelease.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheSchauspieler = randomAccessFile.readLine();
-					String lineSchauspieler = new String(sucheSchauspieler.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheRegisseur = randomAccessFile.readLine();
-					String lineRegisseur = new String(sucheRegisseur.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheStreaming = randomAccessFile.readLine();
-					String lineStreaming = new String(sucheStreaming.getBytes("ISO-8859-1"), "UTF-8");
-					filme.add(lineTitel);
-					filme.add(lineGenre);
-					filme.add(lineFSK);
-					filme.add(lineRelease);
-					filme.add(lineSchauspieler);
-					filme.add(lineRegisseur);
-					filme.add(lineStreaming);
 
+					filme.add(sucheTitel);
+					filme.add(sucheGenre);
+					filme.add(sucheFSK);
+					filme.add(sucheRelease);
+					filme.add(sucheSchauspieler);
+					filme.add(sucheRegisseur);
+					filme.add(sucheStreaming);
 				}
 			}
 		} catch (FileNotFoundException ex) {
@@ -548,25 +567,23 @@ public class DataFilm {
 	}
 
 	public static void FilmExtraLesenUpdate(ArrayList<String> filme) {
+		count = 0;
 		zeileZählenFilmeExtra();
 		try {
 			try (RandomAccessFile randomAccessFile = new RandomAccessFile(DataFilm.FilmeExtra, "r")) {
 				for (int i = 0; i < count; i += 5) {
 
 					String sucheTitel = randomAccessFile.readLine();
-					String lineTitel = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheTrailer = randomAccessFile.readLine();
 					String sucheHandlung = randomAccessFile.readLine();
-					String lineHandlung = new String(sucheHandlung.getBytes("ISO-8859-1"), "UTF-8");
 					String sucheImage = randomAccessFile.readLine();
 					String sucheLaufzeit = randomAccessFile.readLine();
 
-					filme.add(lineTitel);
+					filme.add(sucheTitel);
 					filme.add(sucheTrailer);
-					filme.add(lineHandlung);
+					filme.add(sucheHandlung);
 					filme.add(sucheImage);
 					filme.add(sucheLaufzeit);
-
 				}
 			}
 		} catch (FileNotFoundException ex) {

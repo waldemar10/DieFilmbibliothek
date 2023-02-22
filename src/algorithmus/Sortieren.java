@@ -59,7 +59,7 @@ public class Sortieren {
 				filme.set(i + 4, filme.set(maxPos + 4, filme.get(i + 4)));
 				filme.set(i + 5, filme.set(maxPos + 5, filme.get(i + 5)));
 				filme.set(i + 6, filme.set(maxPos + 6, filme.get(i + 6)));
-				// Vertaucht die Filme so spezifisch das die kleinsten Char werte oben sind
+				// Vertaucht die Filme.txt so spezifisch das die kleinsten Char werte oben sind
 				// Beispiel Z,B,A,H,T A,B,Z,H,T A,B,H,Z,T A,B,H,T,Z
 
 			}
@@ -70,22 +70,20 @@ public class Sortieren {
 	public static void zeileZählen() {
 		BufferedReader br;
 
-			count = 0;
-			try  {
-				Path path = FileSystems.getDefault().getPath("Data", "Filme");
-				br = Files.newBufferedReader(path, StandardCharsets.UTF_8);
-				for (; br.readLine() != null;) {
-					count++;
-				}
-				br.close();
+		count = 0;
+		try {
+			Path path = FileSystems.getDefault().getPath("Data", "Filme.txt");
+			br = Files.newBufferedReader(path, StandardCharsets.UTF_8);
+			for (; br.readLine() != null; ) {
+				count++;
 			}
-			
-		 catch (FileNotFoundException e) {
+			br.close();
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 
 	}
 
@@ -102,40 +100,42 @@ public class Sortieren {
 		}
 		return kontrolle;
 	}
+
 	// Bubble Sort f�r den Genre
-		public static ArrayList<String> BubbleSortTitel(ArrayList<String> filme) {
-			for (int i = 0; i < filme.size() - 7; i++) {
-				for (int j = 0; j < filme.size() - 7; j += 7) {
-					if (filme.get(j).compareToIgnoreCase(filme.get(j + 7)) > 0) {
+	public static ArrayList<String> BubbleSortTitel(ArrayList<String> filme) {
+		for (int i = 0; i < filme.size() - 7; i++) {
+			for (int j = 0; j < filme.size() - 7; j += 7) {
+				if (filme.get(j).compareToIgnoreCase(filme.get(j + 7)) > 0) {
 
-						String temp = filme.get(j);
-						String temp1 = filme.get(j + 1);
-						String temp2 = filme.get(j + 2);
-						String temp3 = filme.get(j + 3);
-						String temp4 = filme.get(j + 4);
-						String temp5 = filme.get(j + 5);
-						String temp6 = filme.get(j + 6);
+					String temp = filme.get(j);
+					String temp1 = filme.get(j + 1);
+					String temp2 = filme.get(j + 2);
+					String temp3 = filme.get(j + 3);
+					String temp4 = filme.get(j + 4);
+					String temp5 = filme.get(j + 5);
+					String temp6 = filme.get(j + 6);
 
-						filme.set(j, filme.get(j + 7));
-						filme.set(j + 1, filme.get(j + 8));
-						filme.set(j + 2, filme.get(j + 9));
-						filme.set(j + 3, filme.get(j + 10));
-						filme.set(j + 4, filme.get(j + 11));
-						filme.set(j + 5, filme.get(j + 12));
-						filme.set(j + 6, filme.get(j + 13));
+					filme.set(j, filme.get(j + 7));
+					filme.set(j + 1, filme.get(j + 8));
+					filme.set(j + 2, filme.get(j + 9));
+					filme.set(j + 3, filme.get(j + 10));
+					filme.set(j + 4, filme.get(j + 11));
+					filme.set(j + 5, filme.get(j + 12));
+					filme.set(j + 6, filme.get(j + 13));
 
-						filme.set(j + 7, temp);
-						filme.set(j + 8, temp1);
-						filme.set(j + 9, temp2);
-						filme.set(j + 10, temp3);
-						filme.set(j + 11, temp4);
-						filme.set(j + 12, temp5);
-						filme.set(j + 13, temp6);
-					}
+					filme.set(j + 7, temp);
+					filme.set(j + 8, temp1);
+					filme.set(j + 9, temp2);
+					filme.set(j + 10, temp3);
+					filme.set(j + 11, temp4);
+					filme.set(j + 12, temp5);
+					filme.set(j + 13, temp6);
 				}
 			}
-			return filme;
 		}
+		return filme;
+	}
+
 	// Bubble Sort f�r den Genre
 	public static ArrayList<String> BubbleSortGenre(ArrayList<String> filme) {
 		for (int i = 0; i < filme.size() - 7; i++) {
@@ -346,48 +346,4 @@ public class Sortieren {
 		return filme;
 	}
 
-	public static void Filmeauslesen(ArrayList<String> filme) {
-		BufferedReader br;
-		try {
-			Path path = FileSystems.getDefault().getPath("Data", "Filme");
-			br = Files.newBufferedReader(path, StandardCharsets.UTF_8);
-			//br = new BufferedReader(new FileReader("Data/Filme"));
-		
-		zeileZählen();
-
-		for (int i = 0; i < count; i += 7) {
-
-			String filmTitel = br.readLine().substring(10);
-			filme.add(filmTitel);
-
-			String genre = br.readLine().substring(6);
-			filme.add(genre);
-
-			String altersFreigabe = br.readLine().substring(4);
-			filme.add(altersFreigabe);
-
-			String release = br.readLine().substring(8);
-			filme.add(release);
-
-			String schauSpieler = br.readLine().substring(13);
-			filme.add(schauSpieler);
-
-			String regisseur = br.readLine().substring(10);
-			filme.add(regisseur);
-
-			String streaming = br.readLine().substring(10);
-			filme.add(streaming);
-
-		}br.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-
-	}
 }

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import algorithmus.Sortieren;
 import data.DataFilm;
 import data.Watchlist;
+import functions.functions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,16 +27,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class WatchlistController {
-	@FXML
-	private Button btFilminformation;
-	@FXML
-	private Button btWatchlistLaden;
-	@FXML
-	private Button btLöschen;
+
+
 	@FXML
 	private Button btZurück;
-	@FXML
-	private Button exitButton;
 	@FXML
 	private TableView<data.DatenbankFilme> tabViewWatchliste;
 
@@ -60,7 +55,6 @@ public class WatchlistController {
 	@FXML
 	private TableColumn<data.DatenbankFilme, String> tcStreaming;
 
-	static int count;
 	static String titel;
 
 	public void handleButtonClickInformationAction(MouseEvent event) {
@@ -70,31 +64,16 @@ public class WatchlistController {
 
 	}
 
-	public void handleButtonInformationAction(ActionEvent event) {
+	public void handleButtonInformationAction(ActionEvent event) throws IOException {
 		ArrayList<String> FilmeTitel = new ArrayList<>();
 		DataFilm.FilmListeTitel(FilmeTitel);
 		Sortieren.BubbleSort(FilmeTitel);
 		if (titel != null) {
 			for (int i = 0; i < FilmeTitel.size(); i++) {
 				if (titel.equals(FilmeTitel.get(i))) {
-					Node source = (Node) event.getSource();
-					Stage oldStage = (Stage) source.getScene().getWindow();
-					oldStage.close();
 					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FilmansichtWindow.fxml"));
-					Parent root = null;
-					try {
-						root = (Parent) fxmlLoader.load();
-					} catch (IOException e) {
-						System.out.println("Fehler beim �ffnen der FilmansichtWindow.fxml");
-						e.printStackTrace();
-					}
-					Stage stage = new Stage();
-					String pfad = "/Image/LogoFilmbibliothek.png";
-					Image image = new Image(pfad);
-					stage.getIcons().add(image);
-					stage.setTitle("Filmansicht: " + FilmeTitel.get(i));
-					stage.setScene(new Scene(root));
-					stage.show();
+					Parent root = (Parent) fxmlLoader.load();
+					functions.createWindow(new Stage (),"Filmansicht: " + FilmeTitel.get(i),event,new Scene(root));
 				}
 			}
 		}
@@ -136,7 +115,7 @@ public class WatchlistController {
 		Watchlist.WatchlisteLesen(Watchliste, watchlistAnwender);
 		Sortieren.BubbleSort(Watchliste);
 
-		Sortieren.Filmeauslesen(Filmliste);
+		DataFilm.Filmeauslesen(Filmliste);
 		Sortieren.BubbleSortTitel(Filmliste);
 
 		int[] speichern = new int[Watchliste.size()];
@@ -174,33 +153,12 @@ public class WatchlistController {
 		tabViewWatchliste.setItems(getWatchlist());
 	}
 
-	public void handleButtonZurück(ActionEvent event) {
+	public void handleButtonZurück(ActionEvent event) throws IOException {
 		if (event.getSource() == btZurück) {
 
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Startseite.fxml"));
-			Parent root = null;
-			try {
-				root = (Parent) fxmlLoader.load();
-			} catch (IOException e) {
-				System.out.println("Fehler beim öffnen der Startseite.fxml");
-				e.printStackTrace();
-			}
-			Stage stage = new Stage();
-			String pfad = "/Image/LogoFilmbibliothek.png";
-			Image image = new Image(pfad);
-			stage.getIcons().add(image);
-			stage.setTitle("Startseite");
-			stage.setScene(new Scene(root));
-			stage.show();
-			Node source = (Node) event.getSource();
-			Stage oldStage = (Stage) source.getScene().getWindow();
-			oldStage.close();
+			Parent root = fxmlLoader.load();
+			functions.createWindow(new Stage (),"Startseite",event,new Scene(root));
 		}
 	}
-	public void onClick_exitButton() {
-		
-		  Stage stage = (Stage) exitButton.getScene().getWindow();
-		  stage.close();
-		 
-	 }
 }

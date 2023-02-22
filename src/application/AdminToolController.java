@@ -12,6 +12,7 @@ import algorithmus.Sortieren;
 import data.DataFilm;
 import data.DataLogin;
 import data.Watchlist;
+import functions.functions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,13 +20,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
 
 public class AdminToolController implements Initializable {
 	@FXML
@@ -49,37 +48,13 @@ public class AdminToolController implements Initializable {
 	@FXML
 	private TextField tfImage;
 	@FXML
-	private TextField tfSpeicherpfad;
-	@FXML
 	private TextField tfTrailer;
 	@FXML
 	private TextArea taHandlung;
 	@FXML
-	private Button btBildUpload;
-	@FXML
-	private Button btHinzufügen;
-	@FXML
-	private Button btUpdate;
-	@FXML
-	private Button btDelete;
-	@FXML
-	private Button btLogout;
-	@FXML
-	private Button btRefresh;
-	@FXML
-	private Button exitButton;
-	@FXML
 	private TextArea taKonsole;
 
 	public static String titel;
-	/*
-	 * @FXML void bildUpload(ActionEvent event) { FileChooser fc = new
-	 * FileChooser(); fc.setTitle("Bild auswählen"); File file =
-	 * fc.showOpenDialog(null); tfSpeicherpfad.appendText(file.getAbsolutePath());;
-	 * 
-	 * 
-	 * }
-	 */
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -90,12 +65,14 @@ public class AdminToolController implements Initializable {
 		lwListViewFilme.getItems().addAll(FilmListe);
 	}
 
-	public void handleButtonClickInformationAction(MouseEvent event) {
+	public void handleButtonClickInformationAction() {
+
 		if (lwListViewFilme.getSelectionModel().getSelectedItem() != null) {
 			titel = lwListViewFilme.getSelectionModel().getSelectedItem();
 		}
 		ArrayList<String> AdminToolUpdateFilm = new ArrayList<>();
-		Sortieren.Filmeauslesen(AdminToolUpdateFilm);
+		DataFilm.Filmeauslesen(AdminToolUpdateFilm);
+
 		for (int i = 0; i < AdminToolUpdateFilm.size(); i++) {
 			if (titel.equals(AdminToolUpdateFilm.get(i))) {
 				tfFilmtitel.setText(AdminToolUpdateFilm.get(i));
@@ -109,6 +86,7 @@ public class AdminToolController implements Initializable {
 		}
 		ArrayList<String> AdminToolUpdateFilmExtra = new ArrayList<>();
 		DataFilm.FilmeExtraAuslesen(AdminToolUpdateFilmExtra);
+
 		for (int i = 0; i < AdminToolUpdateFilmExtra.size(); i++) {
 			if (titel.equals(AdminToolUpdateFilmExtra.get(i))) {
 				tfTrailer.setText(AdminToolUpdateFilmExtra.get(i + 1));
@@ -120,17 +98,18 @@ public class AdminToolController implements Initializable {
 
 	}
 
-	public void handleButtonUpdateAction(ActionEvent event) {
-		//Funktioniert nicht richtig
+	public void handleButtonUpdateAction() {
+
 		ArrayList<String> AdminToolUpdateFilm = new ArrayList<>();
 		DataFilm.FilmLesenUpdate(AdminToolUpdateFilm);
 		ArrayList<String> AdminToolUpdateFilmExtra = new ArrayList<>();
 		DataFilm.FilmExtraLesenUpdate(AdminToolUpdateFilmExtra);
-		
+
 		DataFilm.FilmDaten.delete();
 		DataFilm.FilmeExtra.delete();
 
 		DataFilm.dateiErstellen();
+
 		// Speicher an der Position des geänderten Films die Werte ein
 		for (int i = 0; i < AdminToolUpdateFilm.size(); i++) {
 			String zusatzTitel = ("Filmtitel:" + titel);
@@ -144,12 +123,15 @@ public class AdminToolController implements Initializable {
 				AdminToolUpdateFilm.set(i + 6, "Streaming:" + tfStreaminganbieter.getText());
 			}
 		}
-		// Speichern des geänderten Films in die Datei Filme
+
+
+		// Speichern des geänderten Films in die Datei Filme.txt
 		for (int i = 0; i < AdminToolUpdateFilm.size(); i += 7) {
 			DataFilm.filmSpeichernOhneZeile(AdminToolUpdateFilm.get(i), AdminToolUpdateFilm.get(i + 1),
 					AdminToolUpdateFilm.get(i + 2), AdminToolUpdateFilm.get(i + 3), AdminToolUpdateFilm.get(i + 4),
 					AdminToolUpdateFilm.get(i + 5), AdminToolUpdateFilm.get(i + 6));
 		}
+
 		// Speicher an der Position des geänderten Films die Werte ein, für die
 		// FilmExtra Datei
 		for (int i = 0; i < AdminToolUpdateFilmExtra.size(); i++) {
@@ -160,14 +142,18 @@ public class AdminToolController implements Initializable {
 				AdminToolUpdateFilmExtra.set(i + 3, tfImage.getText());
 				AdminToolUpdateFilmExtra.set(i + 4, tfLaufzeit.getText());
 			}
+
 		}
-		// Speichern des geänderten Films in die Datei FilmeExtra
+
+		// Speichern des geänderten Films in die Datei FilmeExtra.txt
 		for (int i = 0; i < AdminToolUpdateFilmExtra.size(); i += 5) {
 			DataFilm.filmExtraSpeichernOhneZeile(AdminToolUpdateFilmExtra.get(i), AdminToolUpdateFilmExtra.get(i + 1),
 					AdminToolUpdateFilmExtra.get(i + 2), AdminToolUpdateFilmExtra.get(i + 3),
 					AdminToolUpdateFilmExtra.get(i + 4));
 		}
+
 		taKonsole.setText("Film " + titel + " wurde erfolgreich aktualisiert.");
+
 	}
 
 	public void handleButtonLogoutAction(ActionEvent event) {
@@ -177,11 +163,8 @@ public class AdminToolController implements Initializable {
 
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
-			Parent root = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Login");
-			stage.setScene(new Scene(root));
-			stage.show();
+			Parent root = fxmlLoader.load();
+			functions.createWindow(new Stage (),"Login",event,new Scene(root));
 		} catch (IOException e) {
 			e.printStackTrace();
 
@@ -196,10 +179,7 @@ public class AdminToolController implements Initializable {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminToolWindow.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
-			stage.setTitle("Admin Tool");
-			stage.setScene(new Scene(root));
-			stage.show();
+			functions.createWindow(new Stage (),"Admin",event,new Scene(root));
 		} catch (IOException e) {
 			e.printStackTrace();
 
@@ -207,16 +187,18 @@ public class AdminToolController implements Initializable {
 	}
 
 	public void handleButtonHinzufügenAction(ActionEvent event) {
-		// Falls irgendwo etwas nichts steht, wird auch nicht gespeichert
+
+		taKonsole.setText("");
+
 		if (tfFilmtitel.getText().isEmpty() || tfGenre.getText().isEmpty() || tfErscheinungsdatum.getText().isEmpty()
 				|| tfHauptdarsteller.getText().isEmpty() || tfRegisseur.getText().isEmpty()
 				|| tfStreaminganbieter.getText().isEmpty() || tfFsk.getText().isEmpty() || tfTrailer.getText().isEmpty()
 				|| taHandlung.getText().isEmpty() || tfImage.getText().isEmpty() || tfLaufzeit.getText().isEmpty()) {
-			taKonsole.setText("Mindestens ein Feld ist Leer!");
+			taKonsole.setText("Hinzufügen NICHT erfolgreich. Mindestens ein Feld ist Leer!");
 			return;
 		}
 		ArrayList<String> FilmeSuche = new ArrayList<>();
-		Sortieren.Filmeauslesen(FilmeSuche);
+		DataFilm.Filmeauslesen(FilmeSuche);
 		if (DataFilm.filmKontrolle(FilmeSuche, tfFilmtitel.getText()) == false) {
 			// Speichern des neuen Films
 			DataFilm.filmSpeichern(tfFilmtitel.getText(), tfGenre.getText(), tfFsk.getText(),
@@ -224,17 +206,13 @@ public class AdminToolController implements Initializable {
 					tfStreaminganbieter.getText());
 			DataFilm.filmExtraSpeichern(tfFilmtitel.getText(), tfTrailer.getText(), taHandlung.getText(),
 					tfImage.getText(), tfLaufzeit.getText());
+			taKonsole.setText("Film " + tfFilmtitel.getText() + " wurde erfolgreich hinzugefügt.");
 		} else {
 			taKonsole.setText("Film schon in der Filmbibliothek!");
 			return;
 		}
 	}
-	public void onClick_exitButton() {
-		
-		  Stage stage = (Stage) exitButton.getScene().getWindow();
-		  stage.close();
-		 
-	 }
+
 	public void handleButtonLöschenAction(ActionEvent event) {
 		// Abfragen, ob man wirklich löschen möchte
 		if (titel != null) {

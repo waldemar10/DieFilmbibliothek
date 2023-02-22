@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import data.DataFilm;
 import data.DatenbankFilme;
+import functions.functions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,36 +50,22 @@ public class DatenbankFilmeController implements Initializable {
 	@FXML
 	private TableColumn<DatenbankFilme, String> tcRegisseur;
 
-	 //@FXML
-	  //private JFXTreeView<?> treeView;
-	
 	@FXML
 	private TableColumn<DatenbankFilme, String> tcStreaming;
-	protected DatenbankFilme currentItemSelected;
+
 	public static int count;
-	public static int stelle;
-	public static boolean check;
+
 
 	@FXML
 	public void clickZeile(MouseEvent event) throws IOException {
-		if (event.getClickCount() == 2 && tabViewDatenbankFilme.getSelectionModel().getSelectedItem() != null) // F�r
+		if (event.getClickCount() == 2 && tabViewDatenbankFilme.getSelectionModel().getSelectedItem() != null) // Für
 																												// Doppelklick
 		{
-			// �ffne Filmansicht
-			Node source = (Node) event.getSource();
-			Stage oldStage = (Stage) source.getScene().getWindow();
-			oldStage.close();
+
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FilmansichtWindow.fxml"));
-			Parent root = null;
-			try {
-				root = (Parent) fxmlLoader.load();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			Stage stage = new Stage();
-			stage.setTitle("Filmansicht: " + tabViewDatenbankFilme.getSelectionModel().getSelectedItem().getTitel());
-			stage.setScene(new Scene(root));
-			stage.show();
+			Parent root = fxmlLoader.load();
+			functions.createWindowMouse(new Stage (),
+					("Filmansicht: " + tabViewDatenbankFilme.getSelectionModel().getSelectedItem().getTitel()),event,new Scene(root));
 		}
 	}
 
@@ -105,21 +92,14 @@ public class DatenbankFilmeController implements Initializable {
 				for (int i = 0; i < count; i += 7) {
 
 					String filmtitel = randomAccessFile3.readLine().substring(10);
-					String lineTitel = new String(filmtitel.getBytes("ISO-8859-1"), "UTF-8");
 					String genre = randomAccessFile3.readLine().substring(6);
-					String lineGenre = new String(genre.getBytes("ISO-8859-1"), "UTF-8");
 					String fsk = randomAccessFile3.readLine().substring(4);
-					String lineFSK = new String(fsk.getBytes("ISO-8859-1"), "UTF-8");
 					String release = randomAccessFile3.readLine().substring(8);
-					String lineRelease = new String(release.getBytes("ISO-8859-1"), "UTF-8");
 					String schauspieler = randomAccessFile3.readLine().substring(13);
-					String lineSchauspieler = new String(schauspieler.getBytes("ISO-8859-1"), "UTF-8");
 					String regisseur = randomAccessFile3.readLine().substring(10);
-					String lineRegisseur = new String(regisseur.getBytes("ISO-8859-1"), "UTF-8");
 					String streaming = randomAccessFile3.readLine().substring(10);
-					String lineStreaming = new String(streaming.getBytes("ISO-8859-1"), "UTF-8");
-					list.add(new DatenbankFilme(lineTitel, lineGenre, lineFSK, lineRelease, lineSchauspieler, lineRegisseur,
-							lineStreaming));
+					list.add(new DatenbankFilme(filmtitel, genre, fsk, release, schauspieler, regisseur,
+							streaming));
 				}
 			}
 		} catch (FileNotFoundException ex) {

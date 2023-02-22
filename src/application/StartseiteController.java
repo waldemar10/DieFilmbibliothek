@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import algorithmus.Sortieren;
 import algorithmus.SuchFunktion;
 import data.DataFilm;
+import functions.functions;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -49,51 +50,18 @@ public class StartseiteController {
 	private Button btWatchlist;
 	@FXML
 	private Button btSuchen;
-	@FXML
-	private BorderPane mainPane;
-	@FXML
-	private Button exitButton;
 
-	public void handleButtonMeinProfilAction(ActionEvent event) {
+
+	public void handleButtonMeinProfilAction(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
-		Parent root = null;
-		try {
-			root = (Parent) fxmlLoader.load();
-		} catch (IOException e) {
-			System.out.println("Fehler beim laden der Profil.fxml");
-			e.printStackTrace();
-		}
-		Stage stage = new Stage();
-		String pfad = "/Image/LogoFilmbibliothek.png";
-		Image image = new Image(pfad);
-		stage.getIcons().add(image);
-		stage.setTitle("Mein Profil");
-		stage.setScene(new Scene(root));
-		stage.show();
-		Node source = (Node) event.getSource();
-		Stage oldStage = (Stage) source.getScene().getWindow();
-		oldStage.close();
+		Parent root = fxmlLoader.load();
+		functions.createWindow(new Stage (),"Login",event,new Scene(root));
 	}
-	public void handleButtonWatchlistAction(ActionEvent event) {
+	public void handleButtonWatchlistAction(ActionEvent event) throws IOException {
 		if (event.getSource() == btWatchlist) {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Watchlist.fxml"));
-			Parent root = null;
-			try {
-				root = (Parent) fxmlLoader.load();
-			} catch (IOException e) {
-				System.out.println("Fehler beim laden der Watchlist.fxml");
-				e.printStackTrace();
-			}
-			Stage stage = new Stage();
-			String pfad = "/Image/LogoFilmbibliothek.png";
-			Image image = new Image(pfad);
-			stage.getIcons().add(image);
-			stage.setTitle("Watchlist");
-			stage.setScene(new Scene(root));
-			stage.show();
-			Node source = (Node) event.getSource();
-			Stage oldStage = (Stage) source.getScene().getWindow();
-			oldStage.close();
+			Parent root = fxmlLoader.load();
+			functions.createWindow(new Stage (),"Watchlist",event,new Scene(root));
 		}
 	}
 
@@ -102,7 +70,7 @@ public class StartseiteController {
 		lwListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
-			public void handle(MouseEvent click) {
+			public void handle(MouseEvent click)  {
 				if (click.getClickCount() == 2) {
 					// F�r das Tab Suchleiste werden Mausklicks erkannt und zum jeweiligen Film
 					// gef�hrt
@@ -115,24 +83,19 @@ public class StartseiteController {
 					System.out.println(FilmeTitel.size());
 					for (int i = 0; i < FilmeTitel.size(); i++) {
 						if (geradeAusgewählt.equals(FilmeTitel.get(i))) {
-							Node source = (Node) click.getSource();
-							Stage oldStage = (Stage) source.getScene().getWindow();
-							oldStage.close();
+
 							FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FilmansichtWindow.fxml"));
 							Parent root = null;
 							try {
-								root = (Parent) fxmlLoader.load();
+								root = fxmlLoader.load();
 							} catch (IOException e) {
-								System.out.println("Fehler beim laden der FilmansichtWindow.fxml");
 								e.printStackTrace();
 							}
-							Stage stage = new Stage();
-							String pfad = "/Image/LogoFilmbibliothek.png";
-							Image image = new Image(pfad);
-							stage.getIcons().add(image);
-							stage.setTitle("Filmansicht: " + FilmeTitel.get(i));
-							stage.setScene(new Scene(root));
-							stage.show();
+							try {
+								functions.createWindowMouse(new Stage (),("Filmansicht: " + FilmeTitel.get(i)),click,new Scene(root));
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 						}
 					}
 				}
@@ -182,7 +145,7 @@ public class StartseiteController {
 			int stelleGenre = gefundenGenre * 7;
 			if (gefundenGenre >= 0) {
 				lwListView.getItems().clear();
-				Sortieren.Filmeauslesen(FilmeSuche);
+				DataFilm.Filmeauslesen(FilmeSuche);
 				Sortieren.BubbleSortGenre(FilmeSuche);
 				for (int i = 0; i < SuchFunktion.count; i++) {
 					int stelle = stelleGenre + (7 * i);
@@ -198,7 +161,7 @@ public class StartseiteController {
 			int stelleFsk = gefundenFsk * 7;
 			if (gefundenFsk >= 0) {
 				lwListView.getItems().clear();
-				Sortieren.Filmeauslesen(FilmeSuche);
+				DataFilm.Filmeauslesen(FilmeSuche);
 				Sortieren.BubbleSortFSK(FilmeSuche);
 				for (int i = 0; i < SuchFunktion.count; i++) {
 					int stelle = stelleFsk + (7 * i);
@@ -214,7 +177,7 @@ public class StartseiteController {
 			int stelleRelease = gefundenRelease * 7;
 			if (gefundenRelease >= 0) {
 				lwListView.getItems().clear();
-				Sortieren.Filmeauslesen(FilmeSuche);
+				DataFilm.Filmeauslesen(FilmeSuche);
 				Sortieren.BubbleSortDatum(FilmeSuche);
 				for (int i = 0; i < SuchFunktion.count; i++) {
 					int stelle = stelleRelease + (7 * i);
@@ -230,7 +193,7 @@ public class StartseiteController {
 			int stelleSchauspieler = gefundenSchauspieler * 7;
 			if (gefundenSchauspieler >= 0) {
 				lwListView.getItems().clear();
-				Sortieren.Filmeauslesen(FilmeSuche);
+				DataFilm.Filmeauslesen(FilmeSuche);
 				Sortieren.BubbleSortSpieler(FilmeSuche);
 				for (int i = 0; i < SuchFunktion.count; i++) {
 					int stelle = stelleSchauspieler + (7 * i);
@@ -246,7 +209,7 @@ public class StartseiteController {
 			int stelleRegisseur = gefundenRegisseur * 7;
 			if (gefundenRegisseur >= 0) {
 				lwListView.getItems().clear();
-				Sortieren.Filmeauslesen(FilmeSuche);
+				DataFilm.Filmeauslesen(FilmeSuche);
 				Sortieren.BubbleSortRegisseur(FilmeSuche);
 				for (int i = 0; i < SuchFunktion.count; i++) {
 					int stelle = stelleRegisseur + (7 * i);
@@ -263,7 +226,7 @@ public class StartseiteController {
 			int stelleStreaming = gefundenStreaming * 7;
 			if (gefundenStreaming >= 0) {
 				lwListView.getItems().clear();
-				Sortieren.Filmeauslesen(FilmeSuche);
+				DataFilm.Filmeauslesen(FilmeSuche);
 				Sortieren.BubbleSortAnbieter(FilmeSuche);
 				for (int i = 0; i < SuchFunktion.count; i++) {
 					int stelle = stelleStreaming + (7 * i);
@@ -276,13 +239,4 @@ public class StartseiteController {
 		}
 
 	}
-	public void onClick_exitButton() {
-		
-		 // get a handle to the stage
-		  Stage stage = (Stage) exitButton.getScene().getWindow();
-		  System.out.println(stage);
-		  // do what you have to do
-		  stage.close();
-		 
-	 }
 }

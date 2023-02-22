@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import data.DataLogin;
 import data.Watchlist;
+import functions.functions;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -98,17 +99,8 @@ public class RegistrierungController {
 	@FXML
 	 private void loadStartseiteGuest(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("StartseiteGuest.fxml"));
-		Parent root = (Parent) fxmlLoader.load();
-		Stage stage = new Stage ();
-		String pfad = "/Image/LogoFilmbibliothek.png";
-		Image image = new Image(pfad);
-		stage.getIcons().add(image);
-		stage.setTitle("Startseite Gast");
-		stage.setScene(new Scene(root));
-		stage.show();
-		Node source =(Node) event.getSource();
-		Stage oldStage = (Stage) source.getScene().getWindow();
-		oldStage.close();
+		Parent root = fxmlLoader.load();
+		functions.createWindow(new Stage (),"Startseite Gast",event,new Scene(root));
 	 }
 	
 	 @FXML

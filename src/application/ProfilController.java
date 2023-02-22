@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import data.DataLogin;
+import functions.functions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,14 +62,8 @@ public class ProfilController implements Initializable {
 
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("Startseite.fxml"));
-			Parent root = (Parent) fxmlLoader.load();
-			Stage stage = new Stage ();
-			String pfad = "/Image/LogoFilmbibliothek.png";
-			Image image = new Image(pfad);
-			stage.getIcons().add(image);
-			stage.setTitle("Main Window");
-			stage.setScene(new Scene(root));
-			stage.show();
+			Parent root = fxmlLoader.load();
+			functions.createWindow(new Stage (),"Startseite",event,new Scene(root));
 		}catch(IOException iOException) {
 
 
@@ -79,18 +74,8 @@ public class ProfilController implements Initializable {
 	@FXML
 	 private void loadLogout(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("LoginStartscreen.fxml"));
-		Parent root = (Parent) fxmlLoader.load();
-		Stage stage = new Stage ();
-		String pfad = "/Image/LogoFilmbibliothek.png";
-		Image image = new Image(pfad);
-		stage.getIcons().add(image);
-		stage.setTitle("Main Window");
-		stage.setScene(new Scene(root));
-		stage.show();
-		Node source =(Node) event.getSource();
-		Stage oldStage = (Stage) source.getScene().getWindow();
-		oldStage.close();
-		
+		Parent root = fxmlLoader.load();
+		functions.createWindow(new Stage (),"Login",event,new Scene(root));
 	 }
 	public void onClick_exitButton() {
 		

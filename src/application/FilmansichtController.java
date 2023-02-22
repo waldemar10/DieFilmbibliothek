@@ -15,6 +15,7 @@ import algorithmus.Sortieren;
 import algorithmus.SuchFunktion;
 import data.DataFilm;
 import data.Watchlist;
+import functions.functions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,50 +70,20 @@ public class FilmansichtController implements Initializable {
 	public static String headline;
 	public static boolean check; // Watchlist und Trailer button funktioniert erst, wenn es true ist
 
-	public void handleButtonZurück(ActionEvent event) {
+	public void handleButtonZurück(ActionEvent event) throws IOException {
 		if (event.getSource() == btZurück) {
-			// Falls man sich eingeloggt hat, kommt man zur�ck zur normalen Startseite
+			// Falls man sich eingeloggt hat, kommt man zurück zur normalen Startseite
 			if (LoginController.loginTest == true) {
 				check = false;
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Startseite.fxml"));
-				Parent root = null;
-				try {
-					root = (Parent) fxmlLoader.load();
-				} catch (IOException e) {
-					System.out.println("Fehler beim Laden der Startseite.fxml");
-					e.printStackTrace();
-				}
-				Stage stage = new Stage();
-				String pfad = "/Image/LogoFilmbibliothek.png";
-				Image image = new Image(pfad);
-				stage.getIcons().add(image);
-				stage.setTitle("Startseite");
-				stage.setScene(new Scene(root));
-				stage.show();
-				Node source = (Node) event.getSource();
-				Stage oldStage = (Stage) source.getScene().getWindow();
-				oldStage.close();
+				Parent root = fxmlLoader.load();
+				functions.createWindow(new Stage (),"Startseite",event,new Scene(root));
 			} 
 			else 
 			{
 				FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StartseiteGuest.fxml"));
-				Parent root = null;
-				try {
-					root = (Parent) fxmlLoader.load();
-				} catch (IOException e) {
-					System.out.println("Fehler beim Laden der StartseiteGuest.fxml");
-					e.printStackTrace();
-				}
-				Stage stage = new Stage();
-				String pfad = "/Image/LogoFilmbibliothek.png";
-				Image image = new Image(pfad);
-				stage.getIcons().add(image);
-				stage.setTitle("Startseite Gast");
-				stage.setScene(new Scene(root));
-				stage.show();
-				Node source = (Node) event.getSource();
-				Stage oldStage = (Stage) source.getScene().getWindow();
-				oldStage.close();
+				Parent root =  fxmlLoader.load();
+				functions.createWindow(new Stage (),"Startseite Gast",event,new Scene(root));
 			}
 		}
 	}
@@ -122,12 +93,11 @@ public class FilmansichtController implements Initializable {
 		ArrayList<String> FilmeSuche = new ArrayList<>();
 		ArrayList<String> FilmeExtra = new ArrayList<>();
 		
-		// Um die Fenster�berschrift zu bekommen
+		// Um die Fensterüberschrift zu bekommen
 		Node node = (Node) event.getSource();
 		Stage thisStage = (Stage) node.getScene().getWindow();
 		headline = thisStage.getTitle().substring(13);
-		Sortieren.Filmeauslesen(FilmeSuche);
-		System.out.println(FilmeSuche);
+		DataFilm.Filmeauslesen(FilmeSuche);
 
 		int gefunden = SuchFunktion.lineareSuche(FilmeSuche, headline);
 		int stelleFilmtitel = gefunden + 0;
@@ -139,13 +109,11 @@ public class FilmansichtController implements Initializable {
 		int stelleStreaming = gefunden + 6;
 
 		DataFilm.FilmeExtraAuslesen(FilmeExtra);
-		System.out.println("Extra: "+FilmeExtra);
+
 		int gefundenFilmeExtra = SuchFunktion.lineareSuche(FilmeExtra, headline);
 		int stelleHandlung = gefundenFilmeExtra + 2;
 		int stelleImage = gefundenFilmeExtra + 3;
 		int stelleLaufzeit = gefundenFilmeExtra + 4;
-
-
 
 		tfSchauspieler.setText(FilmeSuche.get(stelleSchauspieler));
 		tfRegisseur.setText(FilmeSuche.get(stelleRegisseur));
@@ -172,8 +140,8 @@ public class FilmansichtController implements Initializable {
 			btWatchlistSpeichern.setVisible(true);
 		}
 
-		// Check, um die Button Funktionsf�hig zu machen, wenn die Filmdaten geladen
-		// wurden
+		// Check, um die Button Funktionsfähig zu machen, wenn die Filmdaten geladen werden
+
 		check = true;
 
 	}
@@ -183,13 +151,13 @@ public class FilmansichtController implements Initializable {
 			ArrayList<String> FilmeTrailer = new ArrayList<>();
 			Node node = (Node) event.getSource();
 			Stage thisStage = (Stage) node.getScene().getWindow();
-			headline = thisStage.getTitle().substring(13); // Die �berschrift des Fensters bekommen, um zu
-															// wissen, welcher Titel gefragt ist
+			headline = thisStage.getTitle().substring(13); // Die überschrift des Fensters bekommen, um zu
+															// wissen, welcher Titel abgerufen wird
 			DataFilm.FilmeExtraAuslesen(FilmeTrailer);
 			int gefunden = SuchFunktion.lineareSuche(FilmeTrailer, headline);
-			int stelleLink = gefunden + 1; // +1 um die Stelle des Trailers im File 'FilmeExtra' zu finden
+			int stelleLink = gefunden + 1; // +1 um die Stelle des Trailers im File 'FilmeExtra.txt' zu finden
 			try {
-				// Den Standardbrowser zum �ffnen der URL
+				// Den Standardbrowser zum öffnen der URL
 				Desktop.getDesktop().browse(new URI(FilmeTrailer.get(stelleLink)));
 
 			} catch (IOException e) {

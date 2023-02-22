@@ -1,0 +1,168 @@
+Filmtitel:V wie Vendetta
+Genre:Fantasy
+FSK:16
+Release:16.03.2006
+Schauspieler:Natalie Portman
+Regisseur:James McTeigue
+Streaming:Netflix
+Filmtitel:Harry Potter und der Stein der Weisen
+Genre:Fantasy
+FSK:06
+Release:22.11.2001
+Schauspieler:Daniel Radcliffe
+Regisseur:Chris Columbus
+Streaming:Amazon Prime Video
+Filmtitel:Herr der Ringe: Die Gefährten
+Genre:Fantasy
+FSK:12
+Release:19.12.2001
+Schauspieler:Orlando Bloom
+Regisseur:Peter Jackson
+Streaming:Amazon Prime Video
+Filmtitel:James Bond 007: Keine Zeit zu sterben
+Genre:Action
+FSK:12
+Release:30.09.2021
+Schauspieler:Daniel Craig
+Regisseur:Cary Joji Fukunaga
+Streaming:Netflix
+Filmtitel:Alien - Das unheimliche Wesen aus einer fremden Welt
+Genre:Horror
+FSK:16
+Release:25.05.1979
+Schauspieler:Bolaji Badejo
+Regisseur:Ridley Scott
+Streaming:Netflix
+Filmtitel:Chihiros Reise ins Zauberland
+Genre:Anime
+FSK:0
+Release:19.06.2003
+Schauspieler:Chihiro Ogino
+Regisseur:Hayao Miyazaki
+Streaming:Netflix
+Filmtitel:Spider-Man 1
+Genre:Action
+FSK:12
+Release:30.09.2002
+Schauspieler:Tobey Maguire
+Regisseur:Sam Raimi
+Streaming:Netflix
+Filmtitel:Avengers:Endgame
+Genre:Action
+FSK:12
+Release:24.04.2019
+Schauspieler:Chris Evans
+Regisseur:Russo
+Streaming:Disney Plus
+Filmtitel:Focus
+Genre:Drama
+FSK:12
+Release:05.03.2015
+Schauspieler:Will Smith
+Regisseur:Glenn Ficarra
+Streaming:Netflix
+Filmtitel:Die Tribute von Panem - The Hunger Games
+Genre:Sci-Fi
+FSK:12
+Release:22.03.2012
+Schauspieler:Jeniffer Lawrenc
+Regisseur:Gary Ross
+Streaming:Joyn
+Filmtitel:Batman - The Dark Knight
+Genre:Action
+FSK:16
+Release:01.08.2008
+Schauspieler:Christian Bale
+Regisseur:Christopher Nolan
+Streaming:Netflix
+Filmtitel:Blade Runner 2049
+Genre:Thriller
+FSK:12
+Release:05.10.2017
+Schauspieler:Ryan Gosling
+Regisseur:Denis Villeneuve
+Streaming:Netflix
+Filmtitel:Scarface
+Genre:Krimi
+FSK:18
+Release:12.01.1983
+Schauspieler:Al Pacino
+Regisseur:Brian De Palma
+Streaming:Netflix
+Filmtitel:Star Wars - Episode VI: Die Rückkehr der Jedi-Ritter
+Genre:Sci-Fi
+FSK:12
+Release:25.05.1983
+Schauspieler:Mark Hamill
+Regisseur:Richard Marquand
+Streaming:Disney Plus
+Filmtitel:Guardians of the Galaxy
+Genre:Action
+FSK:12
+Release:28.08.2014
+Schauspieler:Chris Pratt
+Regisseur:James Gunn
+Streaming:Disney Plus
+Filmtitel:Jurassic Park
+Genre:Abenteuer
+FSK:12
+Release:02.09.1993
+Schauspieler:Sam Neill
+Regisseur:Steven Spielberg
+Streaming:Netflix
+Filmtitel:Twelve Years a Slave
+Genre:Drama
+FSK:12
+Release:16.01.2014
+Schauspieler:Chiwetel Ejiofor
+Regisseur:Steve McQueen
+Streaming:Amazon Prime Video
+Filmtitel:Ziemlich beste Freunde
+Genre:Komödie
+FSK:6
+Release:05.01.2012
+Schauspieler:Omar Sy
+Regisseur:Olivier Nakache
+Streaming:Netflix
+Filmtitel:Matrix
+Genre:Sci-Fi
+FSK:16
+Release:17.06.1999
+Schauspieler:Keanu Reeves
+Regisseur:Lana Wachowski
+Streaming:Netflix
+Filmtitel:Avatar - Aufbruch nach Pandora
+Genre:Sci-Fi
+FSK:12
+Release:17.12.2009
+Schauspieler:Sam Worthington
+Regisseur:James Cameron
+Streaming:Disney Plus
+Filmtitel:Indiana Jones und das Königreich des Kristallschädels
+Genre:Abenteuer
+FSK:12
+Release:22.05.2008
+Schauspieler:Harrison Ford
+Regisseur:Steven Spielberg
+Streaming:Netflix
+Filmtitel:Spider-Man: No Way Home
+Genre:Action
+FSK:12
+Release:15.12.2021
+Schauspieler:Tom Holland
+Regisseur:Jon Watts
+Streaming:Netflix
+Filmtitel:Avatar: The Way of Water
+Genre:Action
+FSK:12
+Release:14.12.2022
+Schauspieler:Sam Worthington
+Regisseur:James Cameron
+Streaming:Disney Plus
+Filmtitel:Demon Slayer - The Movie: Mugen Train
+Genre:Fantasy
+FSK:16
+Release:20.05.2021
+Schauspieler:-
+Regisseur:Haruo Sotozaki
+Streaming:Netflix
