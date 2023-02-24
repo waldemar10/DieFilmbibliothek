@@ -38,7 +38,7 @@ public class functions {
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
-        System.out.println("count "+count);
+
         if(!title.equals("Login") || count > 1){
             Node source =(Node) event.getSource();
             Stage oldStage = (Stage) source.getScene().getWindow();

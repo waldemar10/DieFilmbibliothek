@@ -32,6 +32,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static application.DatenbankFilmeController.headline;
+
 public class FilmansichtController implements Initializable {
 	@FXML
 	private ImageView imageView;
@@ -67,7 +69,7 @@ public class FilmansichtController implements Initializable {
 	private Button btLaden;
 	@FXML
 	private Button exitButton;
-	public static String headline;
+
 	public static boolean check; // Watchlist und Trailer button funktioniert erst, wenn es true ist
 
 	public void handleButtonZurück(ActionEvent event) throws IOException {
@@ -88,62 +90,60 @@ public class FilmansichtController implements Initializable {
 		}
 	}
 
-	public void handleLadenButton(ActionEvent event) {
+	public void handleLadenButton(String title) {
+		if(title!=null) {
+			ArrayList<String> FilmeSuche = new ArrayList<>();
+			ArrayList<String> FilmeExtra = new ArrayList<>();
 
-		ArrayList<String> FilmeSuche = new ArrayList<>();
-		ArrayList<String> FilmeExtra = new ArrayList<>();
-		
-		// Um die Fensterüberschrift zu bekommen
-		Node node = (Node) event.getSource();
+			// Um die Fensterüberschrift zu bekommen
+		/*Node node = (Node) event.getSource();
 		Stage thisStage = (Stage) node.getScene().getWindow();
-		headline = thisStage.getTitle().substring(13);
-		DataFilm.Filmeauslesen(FilmeSuche);
+		headline = thisStage.getTitle().substring(13);*/
 
-		int gefunden = SuchFunktion.lineareSuche(FilmeSuche, headline);
-		int stelleFilmtitel = gefunden + 0;
-		int stelleGenre = gefunden + 1;
-		int stelleFsk = gefunden + 2;
-		int stelleRelease = gefunden + 3;
-		int stelleSchauspieler = gefunden + 4;
-		int stelleRegisseur = gefunden + 5;
-		int stelleStreaming = gefunden + 6;
+			DataFilm.Filmeauslesen(FilmeSuche);
+			int gefunden = SuchFunktion.lineareSuche(FilmeSuche, title);
+			int stelleFilmtitel = gefunden + 0;
+			int stelleGenre = gefunden + 1;
+			int stelleFsk = gefunden + 2;
+			int stelleRelease = gefunden + 3;
+			int stelleSchauspieler = gefunden + 4;
+			int stelleRegisseur = gefunden + 5;
+			int stelleStreaming = gefunden + 6;
 
-		DataFilm.FilmeExtraAuslesen(FilmeExtra);
+			DataFilm.FilmeExtraAuslesen(FilmeExtra);
 
-		int gefundenFilmeExtra = SuchFunktion.lineareSuche(FilmeExtra, headline);
-		int stelleHandlung = gefundenFilmeExtra + 2;
-		int stelleImage = gefundenFilmeExtra + 3;
-		int stelleLaufzeit = gefundenFilmeExtra + 4;
+			int gefundenFilmeExtra = SuchFunktion.lineareSuche(FilmeExtra, title);
+			int stelleHandlung = gefundenFilmeExtra + 2;
+			int stelleImage = gefundenFilmeExtra + 3;
+			int stelleLaufzeit = gefundenFilmeExtra + 4;
 
-		tfSchauspieler.setText(FilmeSuche.get(stelleSchauspieler));
-		tfRegisseur.setText(FilmeSuche.get(stelleRegisseur));
-		tfFilmtitel.setText(FilmeSuche.get(stelleFilmtitel));
-		tfRelease.setText(FilmeSuche.get(stelleRelease));
-		tfFsk.setText(FilmeSuche.get(stelleFsk));
-		tfGenre.setText(FilmeSuche.get(stelleGenre));
-		btStreaming.setText("Zu " + FilmeSuche.get(stelleStreaming));
-		tfJahr.setText("(" + FilmeSuche.get(stelleRelease).substring(6) + ")");
-		taHandlung.setText(FilmeExtra.get(stelleHandlung));
-		tfLaufzeit.setText(FilmeExtra.get(stelleLaufzeit));
-		txFilmname.setText(FilmeSuche.get(stelleFilmtitel));
+			tfSchauspieler.setText(FilmeSuche.get(stelleSchauspieler));
+			tfRegisseur.setText(FilmeSuche.get(stelleRegisseur));
+			tfFilmtitel.setText(FilmeSuche.get(stelleFilmtitel));
+			tfRelease.setText(FilmeSuche.get(stelleRelease));
+			tfFsk.setText(FilmeSuche.get(stelleFsk));
+			tfGenre.setText(FilmeSuche.get(stelleGenre));
+			btStreaming.setText("Zu " + FilmeSuche.get(stelleStreaming));
+			tfJahr.setText("(" + FilmeSuche.get(stelleRelease).substring(6) + ")");
+			taHandlung.setText(FilmeExtra.get(stelleHandlung));
+			tfLaufzeit.setText(FilmeExtra.get(stelleLaufzeit));
+			txFilmname.setText(FilmeSuche.get(stelleFilmtitel));
 
-		String pfad = FilmeExtra.get(stelleImage);
-		Image image = new Image(pfad);
-		imageView.setImage(image);
-
-
+			String pfad = FilmeExtra.get(stelleImage);
+			Image image = new Image(pfad);
+			imageView.setImage(image);
 
 
-		btStreaming.setVisible(true);
-		btTrailer.setVisible(true);
-		if (LoginController.loginTest == true) {
-			btWatchlistSpeichern.setVisible(true);
+			btStreaming.setVisible(true);
+			btTrailer.setVisible(true);
+			if (LoginController.loginTest == true) {
+				btWatchlistSpeichern.setVisible(true);
+			}
+
+			// Check, um die Button Funktionsfähig zu machen, wenn die Filmdaten geladen werden
+
+			check = true;
 		}
-
-		// Check, um die Button Funktionsfähig zu machen, wenn die Filmdaten geladen werden
-
-		check = true;
-
 	}
 
 	public void handleMouseClickTrailer(MouseEvent event) {
@@ -231,19 +231,15 @@ public class FilmansichtController implements Initializable {
 		}
 
 	}
-	public void onClick_exitButton() {
-		
-		  Stage stage = (Stage) exitButton.getScene().getWindow();
-		  stage.close();
-		 
-	 }
+
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// Buttons werden erst angezeigt, wenn man die Filmdaten geladen hat
 		btStreaming.setVisible(false);
 		btWatchlistSpeichern.setVisible(false);
 		btTrailer.setVisible(false);
-
+		handleLadenButton(headline);
 	}
 
 }

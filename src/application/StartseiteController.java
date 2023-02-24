@@ -1,7 +1,9 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import algorithmus.Sortieren;
 import algorithmus.SuchFunktion;
@@ -11,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,7 +29,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class StartseiteController {
+public class StartseiteController implements Initializable {
 
 	public String geradeAusgewählt;
 
@@ -51,6 +54,15 @@ public class StartseiteController {
 	@FXML
 	private Button btSuchen;
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+
+		tpStartseite.setStyle("-fx-base : #333333; -fx-background-color : gray");
+		/*Node thumb = tpStartseiteGuest.lookup(".thumb");
+		thumb.setStyle("-fx-background-color: red;");*/
+
+	}
 
 	public void handleButtonMeinProfilAction(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
@@ -65,7 +77,7 @@ public class StartseiteController {
 		}
 	}
 
-	public void handleMouseClick(MouseEvent event) {
+	/*public void handleMouseClick() {
 
 		lwListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -92,6 +104,7 @@ public class StartseiteController {
 								e.printStackTrace();
 							}
 							try {
+
 								functions.createWindowMouse(new Stage (),("Filmansicht: " + FilmeTitel.get(i)),click,new Scene(root));
 							} catch (IOException e) {
 								e.printStackTrace();
@@ -102,7 +115,7 @@ public class StartseiteController {
 			}
 		});
 
-	}
+	}*/
 
 	public Tab suchleisteTab(TabPane tabPane) {
 
@@ -221,7 +234,7 @@ public class StartseiteController {
 			// Suchen nach Streaming
 			DataFilm.FilmListeStreaming(FilmeStreaming);
 			Sortieren.BubbleSort(FilmeStreaming);
-			System.out.println(FilmeStreaming);
+
 			int gefundenStreaming = SuchFunktion.lineareSucheErweitert(FilmeStreaming, tfSuche.getText());
 			int stelleStreaming = gefundenStreaming * 7;
 			if (gefundenStreaming >= 0) {

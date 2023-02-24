@@ -4,10 +4,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DatenbankFilmeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DatenbankFilmeController" >
    <children>
-      <TableView fx:id="tabViewDatenbankFilme" onMouseClicked="#clickZeile">
-        <columns>
+      <TableView fx:id="tabViewDatenbankFilme" onMouseClicked="#clickZeile" >
+        <columns >
           <TableColumn fx:id="tcTitel" prefWidth="185.60000306367874" text="Filmtitel" />
           <TableColumn fx:id="tcGenre" prefWidth="82.39997863769531" text="Genre" />
             <TableColumn fx:id="tcFsk" prefWidth="40.0" text="FSK" />

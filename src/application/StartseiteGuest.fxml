@@ -33,11 +33,12 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TabPane fx:id="tpStartseiteGuest" prefHeight="450.0" prefWidth="880.0" styleClass="table_view" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane fx:id="tpStartseiteGuest" prefHeight="450.0" prefWidth="880.0"
+                                 tabClosingPolicy="UNAVAILABLE">
                           <tabs>
-                            <Tab fx:id="tbFilmbibliothek" text="Filmbibliothek">
+                            <Tab fx:id="tbFilmbibliothek" text="Filmbibliothek" >
                                  <content>
-                                    <AnchorPane prefHeight="430.0" prefWidth="714.0" stylesheets="@application.css">
+                                    <AnchorPane prefHeight="430.0" prefWidth="714.0" stylesheets="@application.css" >
                                        <children>
                                           <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                                           <fx:include source="DatenbankFilmeWindow.fxml" />
@@ -47,7 +48,8 @@
                               </Tab>
                             <Tab fx:id="tbSuchleiste" text="Suchleiste">
                                  <content>
-                                    <ListView fx:id="lwListView" onMouseClicked="#handleMouseClick" prefHeight="200.0" prefWidth="200.0" />
+                                    <!--onMouseClicked="#handleMouseClick"-->
+                                    <ListView fx:id="lwListView"  prefHeight="200.0" prefWidth="200.0" />
                                  </content>
                               </Tab>
                           </tabs>
@@ -85,7 +87,7 @@
                   <HBox alignment="CENTER_RIGHT" layoutX="1000.0" prefWidth="1000">
                     
                         <Button mnemonicParsing="false" onAction="#loadAnmelden" prefHeight="70.0" prefWidth="100.0" styleClass="hover"
-                        style="-fx-background-color: transparent; -fx-text-fill: white" text="Anmelden">
+                        style="-fx-background-color: #3D5AFE; -fx-text-fill: white" text="Anmelden">
                            <font>
                               <Font size="15.0" />
                            </font>

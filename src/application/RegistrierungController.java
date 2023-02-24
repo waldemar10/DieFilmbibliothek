@@ -61,7 +61,7 @@ public class RegistrierungController {
 		DataLogin.dateiErstellen();
 		if(event.getSource()==btRegistrierung)
 		{
-			System.out.println(tfUsername.getText()+ " " + pfPassword.getText()+" "+tfEmail.getText());
+
 			if(tfUsername.getText().isEmpty()||pfPassword.getText().isEmpty()||tfEmail.getText().isEmpty()) {
 				LabelWrongRegistrierung.setText("Fehlende Angaben");
 				return;

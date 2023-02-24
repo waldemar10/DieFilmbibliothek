@@ -91,7 +91,6 @@ public class Watchlist {
 	public static void WatchlisteLesen(ArrayList<String> filme, File watchlist) {
 		zeileZählenWatchlist(watchlist);
 		//Die File der Watchlist des Nutzers in eine ArrayList auslesen
-		System.out.println(count);
 		try {
 			try (RandomAccessFile randomAccessFile3 = new RandomAccessFile(watchlist, "r")) {
 				for (int i = 0; i < count; i++) {
@@ -113,7 +112,6 @@ public class Watchlist {
 	public static void WatchlisteLesenLöschen(ArrayList<String> filme, File watchlist, String löschen) {
 		zeileZählenWatchlist(watchlist);
 		//Wenn der gel�schte Titel auf die File Watchlist trifft, wird dies �bersprungen
-		System.out.println(count);
 		try {
 			try (RandomAccessFile randomAccessFile3 = new RandomAccessFile(watchlist, "r")) {
 				for (int i = 0; i < count; i++) {

@@ -8,11 +8,13 @@ import java.util.ResourceBundle;
 import algorithmus.Sortieren;
 import algorithmus.SuchFunktion;
 import data.DataFilm;
+import data.DatenbankLogin;
 import functions.functions;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,12 +25,13 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class StartseiteGuestController {
+public class StartseiteGuestController implements Initializable {
 
 	@FXML
 	private Button Suchen;
@@ -39,6 +42,17 @@ public class StartseiteGuestController {
 	@FXML
 	private ListView<String> lwListView;
 	public String geradeAusgewählt;
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+
+		tpStartseiteGuest.setStyle("-fx-base : #333333; -fx-background-color : gray");
+		/*Node thumb = tpStartseiteGuest.lookup(".thumb");
+		thumb.setStyle("-fx-background-color: red;");*/
+
+	}
+
 	@FXML
 	private void loadAnmelden(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
@@ -54,12 +68,13 @@ public class StartseiteGuestController {
 	}
 
 
-	public void handleMouseClick(MouseEvent event) {
+	/*public void handleMouseClick(MouseEvent event) {
 		// F�r das Tab Suchleiste werden Mausklicks erkannt und zum jeweiligen Film
 		// gef�hrt
 		ArrayList<String> FilmeTitel = new ArrayList<>();
 		DataFilm.FilmListeTitel(FilmeTitel);
 		Sortieren.BubbleSort(FilmeTitel);
+		System.out.println(FilmeTitel.size());
 		lwListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -68,7 +83,7 @@ public class StartseiteGuestController {
 
 					geradeAusgewählt = lwListView.getSelectionModel().getSelectedItem();
 
-					System.out.println(FilmeTitel.size());
+					System.out.println("Gast Klick "+FilmeTitel.size());
 					for (int i = 0; i < FilmeTitel.size(); i++) {
 						if (geradeAusgewählt.equals(FilmeTitel.get(i))) {
 							FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FilmansichtWindow.fxml"));
@@ -79,7 +94,9 @@ public class StartseiteGuestController {
 								e.printStackTrace();
 							}
 							try {
+								headline = FilmeTitel.get(i);
 								functions.createWindowMouse(new Stage (),"Filmansicht: " + FilmeTitel.get(i),click,new Scene(root));
+
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
@@ -89,7 +106,7 @@ public class StartseiteGuestController {
 			}
 		});
 
-	}
+	}*/
 
 	public Tab suchleisteTab(TabPane tabPane) {
 

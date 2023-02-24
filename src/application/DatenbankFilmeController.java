@@ -55,13 +55,14 @@ public class DatenbankFilmeController implements Initializable {
 
 	public static int count;
 
-
+	public static String headline;
 	@FXML
 	public void clickZeile(MouseEvent event) throws IOException {
+
 		if (event.getClickCount() == 2 && tabViewDatenbankFilme.getSelectionModel().getSelectedItem() != null) // Für
 																												// Doppelklick
 		{
-
+			headline = tabViewDatenbankFilme.getSelectionModel().getSelectedItem().getTitel();
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FilmansichtWindow.fxml"));
 			Parent root = fxmlLoader.load();
 			functions.createWindowMouse(new Stage (),

@@ -50,7 +50,7 @@
                                  </content></Tab>
                             <Tab fx:id="tbSuchleiste" text="Suchleiste">
                                  <content>
-                                    <ListView fx:id="lwListView" onMouseClicked="#handleMouseClick" prefHeight="200.0" prefWidth="200.0" />
+                                    <ListView fx:id="lwListView"  prefHeight="200.0" prefWidth="200.0" />
                                  </content></Tab>
                           </tabs>
                         </TabPane>
