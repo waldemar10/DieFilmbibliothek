@@ -74,7 +74,7 @@ public class LoginController {
 				}
 			}
 
-			if( DataLogin.dateiKontrolle( tfName.getText(),pfPassword.getText() ) || LoginTest() ) {
+			if( DataLogin.dateiKontrolle( tfName.getText(),pfPassword.getText() ) || LoginTest() == true ) {
 				ProfilController.username = tfName.getText();
 				ProfilController.password = pfPassword.getText();
 				benutzername = tfName.getText();
@@ -97,7 +97,7 @@ public class LoginController {
                 fmBenutzername.setText("Benutzername vergessen?");
             }
 			if(!pfPassword.getText().isEmpty() && !tfName.getText().isEmpty()) {
-				 fmFehlermeldung.setText("Login ist fehlerhaft!");
+				 fmFehlermeldung.setText("Login.txt ist fehlerhaft!");
 			}
 		}
 	}

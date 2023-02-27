@@ -75,7 +75,7 @@ public class RegistrierungController {
 			if(DataLogin.dateiKontrolleRegistrierung(tfUsername.getText(),tfEmail.getText())==false&&dateiKontrollePasswort(pfPassword.getText())==false)
 			{
 				
-				File WatchlistAnwender = new File("WatchlistAnwender/Watchlist von "+tfUsername.getText().toUpperCase());
+				File WatchlistAnwender = new File("WatchlistAnwender/Watchlist von "+tfUsername.getText().toUpperCase()+".txt");
 				Watchlist.watchlistDatei(WatchlistAnwender);
 				LoginController.benutzername = tfUsername.getText();
 				DataLogin.dateiSpeichern(tfUsername.getText(),pfPassword.getText(),tfEmail.getText());

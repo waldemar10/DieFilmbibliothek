@@ -57,7 +57,7 @@ public class StartseiteGuestController implements Initializable {
 	private void loadAnmelden(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
 		Parent root = fxmlLoader.load();
-		functions.createWindow(new Stage (),"Login",event,new Scene(root));
+		functions.createWindow(new Stage (),"Login.txt",event,new Scene(root));
 	}
 
 	@FXML
@@ -68,13 +68,13 @@ public class StartseiteGuestController implements Initializable {
 	}
 
 
-	/*public void handleMouseClick(MouseEvent event) {
-		// F�r das Tab Suchleiste werden Mausklicks erkannt und zum jeweiligen Film
-		// gef�hrt
+	public void handleMouseClick(MouseEvent event) {
+		// Für das Tab Suchleiste werden Mausklicks erkannt und zum jeweiligen Film geführt
+
 		ArrayList<String> FilmeTitel = new ArrayList<>();
 		DataFilm.FilmListeTitel(FilmeTitel);
 		Sortieren.BubbleSort(FilmeTitel);
-		System.out.println(FilmeTitel.size());
+
 		lwListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
@@ -83,18 +83,21 @@ public class StartseiteGuestController implements Initializable {
 
 					geradeAusgewählt = lwListView.getSelectionModel().getSelectedItem();
 
-					System.out.println("Gast Klick "+FilmeTitel.size());
+
 					for (int i = 0; i < FilmeTitel.size(); i++) {
 						if (geradeAusgewählt.equals(FilmeTitel.get(i))) {
+
+							DatenbankFilmeController.headline = FilmeTitel.get(i);
+
 							FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FilmansichtWindow.fxml"));
 							Parent root = null;
 							try {
-								root = (Parent) fxmlLoader.load();
+								root = fxmlLoader.load();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 							try {
-								headline = FilmeTitel.get(i);
+
 								functions.createWindowMouse(new Stage (),"Filmansicht: " + FilmeTitel.get(i),click,new Scene(root));
 
 							} catch (IOException e) {
@@ -106,7 +109,7 @@ public class StartseiteGuestController implements Initializable {
 			}
 		});
 
-	}*/
+	}
 
 	public Tab suchleisteTab(TabPane tabPane) {
 

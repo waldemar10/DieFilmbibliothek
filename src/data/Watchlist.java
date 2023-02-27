@@ -34,7 +34,7 @@ public class Watchlist {
 	}
 
 	public static void zeileZählenWatchlist(File watchlist) {
-		//Gr��e der jeweiligen Watchlist z�hlen
+		//Größe der jeweiligen Watchlist zählen
 		try {
 			count = 0;
 			try (RandomAccessFile randomAccessFile = new RandomAccessFile(watchlist, "r")) {
@@ -73,7 +73,7 @@ public class Watchlist {
 				for (int i = 0; i < count; i++) {
 					randomAccessFile2.readLine();
 				}
-				//der gew�nschte Film wird gespeichert in der Watchlist
+				//der gewünschte Film wird gespeichert in der Watchlist
 				randomAccessFile2.writeBytes(film + "\n");
 
 			}
@@ -94,8 +94,8 @@ public class Watchlist {
 		try {
 			try (RandomAccessFile randomAccessFile3 = new RandomAccessFile(watchlist, "r")) {
 				for (int i = 0; i < count; i++) {
-
 					String sucheTitel = randomAccessFile3.readLine();
+					String utf8 = new String(sucheTitel.getBytes("ISO-8859-1"), "UTF-8");
 					filme.add(sucheTitel);
 				}
 			}
@@ -111,12 +111,13 @@ public class Watchlist {
 
 	public static void WatchlisteLesenLöschen(ArrayList<String> filme, File watchlist, String löschen) {
 		zeileZählenWatchlist(watchlist);
-		//Wenn der gel�schte Titel auf die File Watchlist trifft, wird dies �bersprungen
+		//Wenn der gelöschte Titel auf die File Watchlist trifft, wird dies übersprungen
 		try {
 			try (RandomAccessFile randomAccessFile3 = new RandomAccessFile(watchlist, "r")) {
 				for (int i = 0; i < count; i++) {
 
 					String sucheTitel = randomAccessFile3.readLine();
+
 					if (sucheTitel.equals(löschen)) {
 
 					} else {

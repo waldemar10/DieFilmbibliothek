@@ -4,18 +4,19 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            stylesheets="@application.css" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DatenbankFilmeController" >
    <children>
-      <TableView fx:id="tabViewDatenbankFilme" onMouseClicked="#clickZeile" >
+      <TableView fx:id="tabViewDatenbankFilme" onMouseClicked="#clickZeile" prefHeight="500.0" prefWidth="900.0" >
         <columns >
-          <TableColumn fx:id="tcTitel" prefWidth="185.60000306367874" text="Filmtitel" />
-          <TableColumn fx:id="tcGenre" prefWidth="82.39997863769531" text="Genre" />
+          <TableColumn fx:id="tcTitel" prefWidth="230" text="Filmtitel" />
+          <TableColumn fx:id="tcGenre" prefWidth="80" text="Genre" />
             <TableColumn fx:id="tcFsk" prefWidth="40.0" text="FSK" />
-            <TableColumn fx:id="tcRelease" prefWidth="69.60003662109375" text="Release" />
-            <TableColumn fx:id="tcSchauspieler" prefWidth="168.79998779296875" text="Schauspieler" />
-            <TableColumn fx:id="tcRegisseur" prefWidth="154.40008544921875" text="Regisseur" />
-            <TableColumn fx:id="tcStreaming" prefWidth="180.0" text="Streaming" />
+            <TableColumn fx:id="tcRelease" prefWidth="70" text="Release" />
+            <TableColumn fx:id="tcSchauspieler" prefWidth="160" text="Schauspieler" />
+            <TableColumn fx:id="tcRegisseur" prefWidth="160" text="Regisseur" />
+            <TableColumn fx:id="tcStreaming" prefWidth="150" text="Streaming" />
         </columns>
       </TableView>
    </children>

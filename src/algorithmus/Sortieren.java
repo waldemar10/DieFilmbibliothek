@@ -32,7 +32,7 @@ public class Sortieren {
 		return filme;
 	}
 	/* Nicht komplett fertiger Code
-	// Selection Sort f�r den Titel
+	// Selection Sort für den Titel
 	public static ArrayList<String> SelectionSortTitel(ArrayList<String> filme) {
 		// Schleife von der Arraylist
 		for (int i = 0; i < filme.size(); i += 7) {

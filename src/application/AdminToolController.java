@@ -164,7 +164,7 @@ public class AdminToolController implements Initializable {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
 			Parent root = fxmlLoader.load();
-			functions.createWindow(new Stage (),"Login",event,new Scene(root));
+			functions.createWindow(new Stage (),"Login.txt",event,new Scene(root));
 		} catch (IOException e) {
 			e.printStackTrace();
 
@@ -250,11 +250,11 @@ public class AdminToolController implements Initializable {
 				ArrayList<String> LoginDaten = new ArrayList<>();
 				DataLogin.dateiAuslesen(LoginDaten);
 				// L�schen des Films in allen Watchlisten
-				for (int k = 0; k < LoginDaten.size(); k += 3) { // +3 Um in der File Data/Login die benutzernamen zu
+				for (int k = 0; k < LoginDaten.size(); k += 3) { // +3 Um in der File Data/Login.txt die benutzernamen zu
 																	// finden
 					String benutzername = LoginDaten.get(k);
 					ArrayList<String> WatchlistMerke = new ArrayList<>();
-					File watchlistAnwender = new File("WatchlistAnwender/Watchlist von " + benutzername);
+					File watchlistAnwender = new File("WatchlistAnwender/Watchlist von " + benutzername+".txt");
 					// Speichern ohne des gelöschten Titels
 					Watchlist.WatchlisteLesenLöschen(WatchlistMerke, watchlistAnwender, titel);
 					// Datei löschen

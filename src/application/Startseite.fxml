@@ -18,17 +18,12 @@
    <children>
       <BorderPane fx:id="mainPane" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #212121;">
          <center>
-            <AnchorPane prefHeight="620.0" prefWidth="880.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="620.0" prefWidth="900.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="BOTTOM_CENTER" prefHeight="600.0" prefWidth="880.0">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="600.0" prefWidth="900.0">
                      <children>
-                        <Button fx:id="btWatchlist" mnemonicParsing="false" onAction="#handleButtonWatchlistAction" style="-fx-background-color: #880000;" text="Watchlist" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                          
-                                                   </Button>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="880.0">
+
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0">
                            <children>
                               <TextField fx:id="tfSuche" prefHeight="25.0" prefWidth="750.0" promptText="Film suchen..." />
                               <Button fx:id="btSuchen" mnemonicParsing="false" onAction="#handleButtonSucheAction" prefHeight="25.0" prefWidth="100.0" styleClass="button_suche" text="Suchen">
@@ -38,11 +33,11 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TabPane fx:id="tpStartseite" prefHeight="450.0" prefWidth="880.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane fx:id="tpStartseite" prefHeight="500.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab fx:id="tbFilmbibliothek" text="Filmbibliothek">
                                  <content>
-                                    <AnchorPane prefHeight="418.0" prefWidth="883.0">
+                                    <AnchorPane prefHeight="400.0" prefWidth="900.0">
                                        <children>
                                           <fx:include source="DatenbankFilmeWindow.fxml" />
                                        </children>
@@ -50,7 +45,7 @@
                                  </content></Tab>
                             <Tab fx:id="tbSuchleiste" text="Suchleiste">
                                  <content>
-                                    <ListView fx:id="lwListView"  prefHeight="200.0" prefWidth="200.0" />
+                                    <ListView fx:id="lwListView"  onMouseClicked="#handleMouseClick" />
                                  </content></Tab>
                           </tabs>
                         </TabPane>
@@ -64,12 +59,18 @@
          <right>
             <AnchorPane prefHeight="618.0" prefWidth="186.0" stylesheets="@application.css" BorderPane.alignment="CENTER" />
          </right>
+         <bottom>
+            <AnchorPane prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" BorderPane.alignment="CENTER" />
+         </bottom>
          <top>
-            <HBox prefHeight="70.0" prefWidth="1280.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
+
+
+
+            <HBox fx:id="boxUserStartscreenButtons" prefHeight="70.0" prefWidth="1280.0"  >
                <children>
                   <Button maxWidth="0.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: transparent;">
                      <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
+                        <Insets left="25.0" top="25.0" />
                      </HBox.margin>
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
@@ -80,31 +81,33 @@
                      </graphic>
                    
                   </Button>
-                 
+                  <Button fx:id="btWatchlist" mnemonicParsing="false" onAction="#handleButtonWatchlistAction" prefHeight="50.0" prefWidth="150.0"
+                           text="Watchlist" >
+                     <HBox.margin>
+                        <Insets left="680.0" top="50.0" />
+
+                     </HBox.margin>
+
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+
+                  </Button>
   
-                  <Button fx:id="btMeinProfil" mnemonicParsing="false" onAction="#handleButtonMeinProfilAction" styleClass="hover"
-                   prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: transparent; -fx-font-size: 20pt ;-fx-text-fill: white ;"
-                    text="Logout" textAlignment="CENTER" textFill="BLACK" wrapText="true">
+                  <Button fx:id="btLogout" mnemonicParsing="false" onAction="#handleButtonLogout" styleClass="hover"
+                   prefHeight="50.0" prefWidth="150.0" text="Logout" textAlignment="CENTER"  wrapText="true">
                  
                      <HBox.margin>
-                        <Insets left="750.0" top="10.0" />
+                        <Insets left="10.0" top="50.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent;">
-                     <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                     
-                        </ImageView>
-                     </graphic>
-                  </Button>
+
                </children>
             </HBox>
+
          </top>
       </BorderPane>
    </children>

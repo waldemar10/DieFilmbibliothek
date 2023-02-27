@@ -33,7 +33,7 @@
                      -->
                 
                         
-                        <!-- Login / Registrierung Switch -->
+                        <!-- Login.txt / Registrierung Switch -->
                         <HBox alignment="TOP_CENTER" styleClass="LoginRegistrationSwitch_header">
                          
                               <Button mnemonicParsing="false" prefWidth="105.0" styleClass="LoginRegistrationSwitch" 

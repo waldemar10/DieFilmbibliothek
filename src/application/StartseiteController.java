@@ -48,7 +48,7 @@ public class StartseiteController implements Initializable {
 	@FXML
 	private ListView<String> lwListView;
 	@FXML
-	private Button btMeinProfil;
+	private Button btLogout;
 	@FXML
 	private Button btWatchlist;
 	@FXML
@@ -64,10 +64,10 @@ public class StartseiteController implements Initializable {
 
 	}
 
-	public void handleButtonMeinProfilAction(ActionEvent event) throws IOException {
+	public void handleButtonLogout(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LoginStartscreen.fxml"));
 		Parent root = fxmlLoader.load();
-		functions.createWindow(new Stage (),"Login",event,new Scene(root));
+		functions.createWindow(new Stage (),"Login.txt",event,new Scene(root));
 	}
 	public void handleButtonWatchlistAction(ActionEvent event) throws IOException {
 		if (event.getSource() == btWatchlist) {
@@ -77,25 +77,25 @@ public class StartseiteController implements Initializable {
 		}
 	}
 
-	/*public void handleMouseClick() {
+	public void handleMouseClick() {
 
 		lwListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent click)  {
 				if (click.getClickCount() == 2) {
-					// F�r das Tab Suchleiste werden Mausklicks erkannt und zum jeweiligen Film
-					// gef�hrt
+					// Für das Tab Suchleiste werden Mausklicks erkannt und zum jeweiligen Film geführt
+
 					ArrayList<String> FilmeTitel = new ArrayList<>();
 					DataFilm.FilmListeTitel(FilmeTitel);
 					Sortieren.BubbleSort(FilmeTitel);
 
 					geradeAusgewählt = lwListView.getSelectionModel().getSelectedItem();
 
-					System.out.println(FilmeTitel.size());
+
 					for (int i = 0; i < FilmeTitel.size(); i++) {
 						if (geradeAusgewählt.equals(FilmeTitel.get(i))) {
-
+							DatenbankFilmeController.headline = FilmeTitel.get(i);
 							FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FilmansichtWindow.fxml"));
 							Parent root = null;
 							try {
@@ -115,7 +115,7 @@ public class StartseiteController implements Initializable {
 			}
 		});
 
-	}*/
+	}
 
 	public Tab suchleisteTab(TabPane tabPane) {
 

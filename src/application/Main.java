@@ -15,7 +15,7 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("LoginStartscreen.fxml"));
 			Scene scene=new Scene(root, 800,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			functions.createWindow(new Stage (),"Login",null,scene);
+			functions.createWindow(new Stage (),"Login.txt",null,scene);
 }
 
 public static void main(String[] args) {

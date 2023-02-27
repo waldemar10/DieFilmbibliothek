@@ -10,8 +10,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="591.0" prefWidth="1125.0" style="-fx-background-color: white;" stylesheets="@application.css"
- xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WatchlistController">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Rectangle2D?>
+<AnchorPane prefHeight="500.0" prefWidth="1125.0" stylesheets="@application.css"
+            xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WatchlistController">
    <children>
       <HBox layoutX="10.0" layoutY="10.0" prefHeight="610.0" prefWidth="870.0">
          <children>
@@ -27,17 +29,25 @@
                               <Insets />
                            </VBox.margin>
                         </Text>
-                        <Button fx:id="btWatchlistLaden" mnemonicParsing="false" onAction="#handleButtonWishlistLadenAction" 
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <ImageView fx:id="imageViewWatchlist"  fitHeight="310.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport></ImageView>
+                           </graphic>
+                        </Button>
+                        <!--<Button fx:id="btWatchlistLaden" mnemonicParsing="false" onAction="#handleButtonWatchlistLadenAction"
                         prefHeight="35.0" prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons" stylesheets="@application.css" text="Watchlist Laden" textFill="WHITE">
                            <VBox.margin>
-                              <Insets bottom="15.0" left="20.0" right="20.0" top="175.0" />
+                              <Insets bottom="15.0" left="20.0" right="20.0" top="10.0" />
                            </VBox.margin>
-                        </Button>
+                        </Button>-->
                         <Button fx:id="btFilminformation" mnemonicParsing="false" onAction="#handleButtonInformationAction" 
                         prefHeight="35.0" prefWidth="210.0" style="-fx-border-color: #2196f3;" styleClass="buttons"
                         stylesheets="@application.css" text="Filminformationen" textFill="WHITE">
                            <VBox.margin>
-                              <Insets bottom="15.0" />
+                              <Insets bottom="15.0" top="30.0"/>
                            </VBox.margin>
                         </Button>
                         <Button fx:id="btLöschen" mnemonicParsing="false" onAction="#handleButtonLöschenAction" 
@@ -58,7 +68,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="589.0" prefWidth="882.0" stylesheets="@application.css">
                <children>
-                  <VBox layoutX="10.0" layoutY="25.0" prefHeight="400.0" prefWidth="872.0" styleClass="LoginVBoxRechts" stylesheets="@application.css">
+                  <VBox layoutX="10.0" layoutY="25.0" prefHeight="400.0" prefWidth="872.0"  stylesheets="@application.css">
                      <children>
                         <TableView fx:id="tabViewWatchliste" onMouseClicked="#handleButtonClickInformationAction" prefHeight="400.0" prefWidth="850.0">
                           <columns>
@@ -68,12 +78,12 @@
                               <TableColumn fx:id="tcRelease" prefWidth="71.20001220703125" text="Release" />
                               <TableColumn fx:id="tcSchauspieler" prefWidth="138.4000244140625" text="Schauspieler" />
                               <TableColumn fx:id="tcRegisseur" prefWidth="115.99993896484375" text="Regisseur" />
-                              <TableColumn fx:id="tcStreaming" prefWidth="149.60003662109375" text="Streaming" />
+                              <TableColumn fx:id="tcStreaming" prefWidth="140" text="Streaming" />
                           </columns>
                         </TableView>
                      </children>
                      <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="5.0" right="15.0" top="5.0" />
                      </padding>
                   </VBox>
                </children>

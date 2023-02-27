@@ -18,11 +18,11 @@
    <children>
       <BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #2196f3;" stylesheets="@application.css">
          <center>
-            <AnchorPane prefHeight="620.0" prefWidth="880.0" style="-fx-background-color: #212121;" stylesheets="@application.css" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="620.0" prefWidth="900.0" style="-fx-background-color: #212121;" stylesheets="@application.css" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="BOTTOM_CENTER" prefHeight="600.0" prefWidth="880.0" style="-fx-background-color:#212121 ;">
+                  <VBox alignment="BOTTOM_CENTER" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color:#212121 ;">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="880.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0">
                            <children>
                               <TextField fx:id="tfSuche" prefHeight="25.0" prefWidth="750.0" promptText="Film suchen..." />
                               <Button fx:id="Suchen" mnemonicParsing="false" onAction="#handleButtonSucheAction" 
@@ -33,12 +33,12 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TabPane fx:id="tpStartseiteGuest" prefHeight="450.0" prefWidth="880.0"
+                        <TabPane fx:id="tpStartseiteGuest" prefHeight="500.0" prefWidth="900.0"
                                  tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab fx:id="tbFilmbibliothek" text="Filmbibliothek" >
                                  <content>
-                                    <AnchorPane prefHeight="430.0" prefWidth="714.0" stylesheets="@application.css" >
+                                    <AnchorPane prefHeight="430.0" prefWidth="900.0" stylesheets="@application.css" >
                                        <children>
                                           <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                                           <fx:include source="DatenbankFilmeWindow.fxml" />
@@ -49,7 +49,8 @@
                             <Tab fx:id="tbSuchleiste" text="Suchleiste">
                                  <content>
                                     <!--onMouseClicked="#handleMouseClick"-->
-                                    <ListView fx:id="lwListView"  prefHeight="200.0" prefWidth="200.0" />
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                                    <ListView fx:id="lwListView" onMouseClicked="#handleMouseClick"  />
                                  </content>
                               </Tab>
                           </tabs>
@@ -64,6 +65,9 @@
          <right>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" BorderPane.alignment="CENTER" />
          </right>
+         <bottom>
+            <AnchorPane prefHeight="20.0" prefWidth="20.0" stylesheets="@application.css" BorderPane.alignment="CENTER" />
+         </bottom>
          <top>
             <HBox prefHeight="70.0" prefWidth="1280.0" style="-fx-background-color: #212121;" BorderPane.alignment="CENTER">
                <children>

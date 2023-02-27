@@ -1,5 +1,9 @@
 package functions;
-
+/**
+ *
+ * @author Waldemar Justus
+ *
+ */
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,10 +23,12 @@ public class functions {
         String pfad = "/Image/LogoFilmbibliothek.png";
         Image image = new Image(pfad);
         stage.getIcons().add(image);
+        title = "Die Filmbibliothek";
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
-        if(!title.equals("Login")|| count > 1){
+
+        if(count >= 1){
             Node source =(Node) event.getSource();
             Stage oldStage = (Stage) source.getScene().getWindow();
             oldStage.close();
@@ -35,11 +41,12 @@ public class functions {
         String pfad = "/Image/LogoFilmbibliothek.png";
         Image image = new Image(pfad);
         stage.getIcons().add(image);
+        title = "Die Filmbibliothek";
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
 
-        if(!title.equals("Login") || count > 1){
+        if(count >= 1){
             Node source =(Node) event.getSource();
             Stage oldStage = (Stage) source.getScene().getWindow();
             oldStage.close();

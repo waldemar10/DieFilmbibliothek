@@ -75,7 +75,7 @@ public class ProfilController implements Initializable {
 	 private void loadLogout(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader (getClass().getResource("LoginStartscreen.fxml"));
 		Parent root = fxmlLoader.load();
-		functions.createWindow(new Stage (),"Login",event,new Scene(root));
+		functions.createWindow(new Stage (),"Login.txt",event,new Scene(root));
 	 }
 	public void onClick_exitButton() {
 		

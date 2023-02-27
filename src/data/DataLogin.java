@@ -11,7 +11,7 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 public class DataLogin {
-	public static File LoginDaten = new File("Data/Login");
+	public static File LoginDaten = new File("Data/Login.txt");
 	static int count;
 
 	public static void dateiErstellen() {
@@ -59,7 +59,7 @@ public class DataLogin {
 				}
 
 				if (count > 0) {
-					//Um Abstand einen nach einem Benutzer in der Login.txt zu machen
+					//Um Abstand einen nach einem Benutzer in der Login.txt.txt zu machen
 					randomAccessFile2.writeBytes("\n");
 					randomAccessFile2.writeBytes("\n");
 				}

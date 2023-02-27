@@ -172,11 +172,11 @@ public class FilmansichtController implements Initializable {
 	public void handleButtonWatchlistAction(ActionEvent event) {
 		if (check == true) {
 			if (event.getSource() == btWatchlistSpeichern) {
-				File watchlistAnwender = new File("WatchlistAnwender/Watchlist von " + LoginController.benutzername);
+				File watchlistAnwender = new File("WatchlistAnwender/Watchlist von " + LoginController.benutzername+".txt");
 				Watchlist.watchlistDatei(watchlistAnwender);
 				Node node = (Node) event.getSource();
 				Stage thisStage = (Stage) node.getScene().getWindow();
-				headline = thisStage.getTitle().substring(13);
+				///headline = thisStage.getTitle().substring(13);
 				Watchlist.watchlistSpeichern(headline, watchlistAnwender, btWatchlistSpeichern);
 			}
 		}

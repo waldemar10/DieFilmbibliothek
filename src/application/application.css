@@ -93,4 +93,25 @@ AnchorPane{
 #LabelWrongRegistrierung{
 	-fx-text-fill: red;
 }
+#btWatchlist{
+-fx-background-color: #3D5AFE;
+-fx-font-size: 20px ;
+-fx-text-fill: white ;
+-fx-background-radius: 10px;
+}
+#btWatchlist:hover{
+-fx-cursor:hand;
+-fx-background-color:#2e45c7;
+}
+#btLogout{
+-fx-background-color: #6b6b70;
+-fx-font-size: 20px ;
+-fx-text-fill: white ;
+-fx-background-radius: 10px;
+}
+#btLogout:hover{
+-fx-cursor:hand;
+-fx-background-color:#46464a;
+}
+
 
